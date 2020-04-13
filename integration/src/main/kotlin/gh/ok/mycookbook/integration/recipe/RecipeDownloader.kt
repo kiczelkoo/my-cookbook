@@ -15,11 +15,11 @@ class RecipeDownloader(private val loginService: RecipeLoginService,
         val driver = ChromeDriver()
         loginService.login(driver)
         var start = from
-        val allMeals: Map<String, List<String>> = emptyMap()
+        val allMeals: MutableMap<String, List<String>> = mutableMapOf()
         while (start.compareTo(to) <= 0) {
             try {
                 val meals: List<String> = dayPlanService.getAllMealsForADay(driver, start)
-                allMeals.plus(Pair(DateCalculator.toString(start), meals))
+                allMeals.put(DateCalculator.toString(start), meals)
             } catch (exc: Exception) {
                 println("exc for day: $start: ${exc.message}")
             }
