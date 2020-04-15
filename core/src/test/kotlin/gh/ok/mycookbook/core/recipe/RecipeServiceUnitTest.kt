@@ -80,7 +80,7 @@ class RecipeServiceUnitTest {
         fun `should import recipes for latest date and given to date`() {
             val latest = LocalDate.of(2020, 4, 13)
             val from = latest.plusDays(1)
-            val to = LocalDate.of(2020, 4, 20)
+            val to = LocalDate.now().plusDays(7)
             every { recipeRepository.getLastImportDate() } returns Optional.of(latest)
             every { recipeDownloader.downloadRecipesForDates(from, to) } returns emptyMap()
             every { recipeRepository.saveAllRecipes(emptyMap()) } just Runs

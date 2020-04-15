@@ -7,7 +7,7 @@ class DateCalculator {
 
     companion object {
 
-        const val DATE_PATTERN = "yyyy-MM-dd"
+        private const val DATE_PATTERN = "yyyy-MM-dd"
 
         fun toString(date: LocalDate): String = date.format(DateTimeFormatter.ofPattern(DATE_PATTERN))
 

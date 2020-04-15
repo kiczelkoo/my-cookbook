@@ -4,10 +4,9 @@ import java.time.LocalDate
 
 class RecipeService(private val recipeRepository: IRecipeRepository,
                     private val recipeDownloader: IRecipeDownloader) {
-    companion object {
-        private val FIRST_DATE = LocalDate.of(2016, 7, 12)
-        private val LAST_DATE = LocalDate.now().plusDays(7)
-    }
+
+    private val FIRST_DATE = LocalDate.of(2016, 7, 12)
+    private val LAST_DATE = LocalDate.now().plusDays(7)
 
 
     fun importNewestRecipes(fromDate: LocalDate?, toDate: LocalDate?) {
