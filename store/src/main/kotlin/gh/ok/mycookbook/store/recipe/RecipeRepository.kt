@@ -2,6 +2,7 @@ package gh.ok.mycookbook.store.recipe
 
 import gh.ok.mycookbook.core.recipe.IRecipeRepository
 import gh.ok.mycookbook.core.utils.DateCalculator
+import gh.ok.mycookbook.domain.recipe.entity.Recipe
 import java.io.File
 import java.time.LocalDate
 import java.util.*
@@ -18,15 +19,15 @@ class RecipeRepository(val recipesLocation: String) : IRecipeRepository {
         return if (latestDirName != null) Optional.of(DateCalculator.toDate(latestDirName)) else Optional.empty()
     }
 
-    override fun saveAllRecipes(recipes: Map<String, List<String>>) {
+    override fun saveAllRecipes(recipes: Map<String, List<Recipe>>) {
         recipes.forEach { (date, recipesForOneDay) -> saveRecipes(date, recipesForOneDay) }
     }
 
-    private fun saveRecipes(date: String, recipes: List<String>) {
-        recipes.forEachIndexed { count, content ->
+    private fun saveRecipes(date: String, recipes: List<Recipe>) {
+        recipes.forEachIndexed { count, recipe ->
             val file = File(recipesLocation.plus("/${date}/${count}.txt"))
                     .also { file -> file.parentFile.mkdirs() }
-            file.writeText(content)
+            file.writeText(recipe.toPrettyString())
         }
     }
 }

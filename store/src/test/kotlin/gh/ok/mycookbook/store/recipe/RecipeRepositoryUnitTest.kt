@@ -1,5 +1,6 @@
 package gh.ok.mycookbook.store.recipe
 
+import gh.ok.mycookbook.domain.recipe.entity.Recipe
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.*
 import java.io.File
@@ -68,7 +69,7 @@ class RecipeRepositoryUnitTest {
         fun `should do nothing if map is empty`() {
             // given
             val noElementsBefore = tmpDirectory.listFiles()?.size
-            val recipesPerDay = emptyMap<String, List<String>>()
+            val recipesPerDay = emptyMap<String, List<Recipe>>()
             // when
             recipeRepository.saveAllRecipes(recipesPerDay)
             // then
@@ -79,7 +80,7 @@ class RecipeRepositoryUnitTest {
         fun `should do nothing if list of recipes for a day is empty`() {
             // given
             val noElementsBefore = tmpDirectory.listFiles()?.size
-            val recipesPerDay = mapOf("2020-04-01" to emptyList<String>())
+            val recipesPerDay = mapOf("2020-04-01" to emptyList<Recipe>())
             // when
             recipeRepository.saveAllRecipes(recipesPerDay)
             // then
@@ -90,7 +91,8 @@ class RecipeRepositoryUnitTest {
         fun `should save recipes in separate directories`() {
             // given
             val expectedDirName = "2020-04-01"
-            val recipesPerDay = mapOf(expectedDirName to listOf("breakfast", "snack"))
+            val recipesPerDay = mapOf(expectedDirName to listOf(Recipe("sniadanie", "jajecznica"),
+                    Recipe("przekaska", "koktajl")))
             // when
             recipeRepository.saveAllRecipes(recipesPerDay)
             //end
