@@ -1,6 +1,9 @@
 package gh.ok.mycookbook.integration.recipe
 
+import gh.ok.mycookbook.domain.groceries.product.Product
+import gh.ok.mycookbook.domain.recipe.entity.Ingredient
 import gh.ok.mycookbook.domain.recipe.entity.Recipe
+import gh.ok.mycookbook.domain.recipe.entity.RecipeCategory
 
 class RecipeConverter {
 
@@ -9,7 +12,7 @@ class RecipeConverter {
         meals.forEach {
             val dishes = it.split("DISH")
 
-            val allIngredients = mutableListOf<String>()
+            val allIngredients = mutableListOf<Ingredient>()
             val allDescriptions = mutableMapOf<String, List<String>>()
 
             var recipeName = ""
@@ -33,6 +36,7 @@ class RecipeConverter {
                     allIngredients,
                     allDescriptions
             ))
+            println(recipes.last().toPrettyString())
         }
         return recipes
     }
@@ -55,7 +59,7 @@ class RecipeConverter {
         return emptyMap()
     }
 
-    private fun extractIngredients(dish: String): List<String> {
+    private fun extractIngredients(dish: String): List<Ingredient> {
         val dishLines: List<String> = dish.split("\n").filter { filterMeaningfulLines(it) }
         if (!dishLines.isEmpty()) {
             val descIndx = dishLines.indexOf("Sposób przygotowania:")
@@ -77,14 +81,14 @@ class RecipeConverter {
         return description
     }
 
-    private fun mapIngredients(ingredients: List<String>): MutableList<String> {
-        val ingredientsList = mutableListOf<String>()
+    private fun mapIngredients(ingredients: List<String>): MutableList<Ingredient> {
+        val ingredientsList = mutableListOf<Ingredient>()
         var amount = ""
         ingredients.forEachIndexed { index, line ->
             if (index % 2 == 0) {
                 amount = amount + line
             } else {
-                ingredientsList.add("$line: $amount")
+                ingredientsList.add(Ingredient(Product(line), amount))
                 amount = ""
             }
         }
@@ -99,8 +103,8 @@ class RecipeConverter {
             && !line.toUpperCase().contains("PRZYPRAWY")
 
 
-    private fun extractCategory(line: String): String {
-        return line.substring(0, line.indexOf(":")).trim()
+    private fun extractCategory(line: String): RecipeCategory {
+        return mapToRecipeCategory(line.substring(0, line.indexOf(":")).trim())
     }
 
     private fun extractKcal(line: String): String {
@@ -113,5 +117,15 @@ class RecipeConverter {
 
     private fun extractPrepTime(line: String): String {
         return line.substring(line.lastIndexOf("|")).replace("Czas przygotowania", "").replace("|", "").trim()
+    }
+
+    private fun mapToRecipeCategory(value: String): RecipeCategory {
+        if ("Śniadanie".equals(value)) return RecipeCategory.BREAKFAST
+        if ("Przekąska poranna".equals(value)) return RecipeCategory.SNACK
+        if ("Przekąska wieczorna".equals(value)) return RecipeCategory.SNACK
+        if ("Przekąska przed treningiem".equals(value)) return RecipeCategory.TRAINING_SNACK
+        if ("Przekąska po treningu".equals(value)) return RecipeCategory.TRAINING_SNACK
+        if ("Obiad".equals(value)) return RecipeCategory.LUNCH
+        if ("Kolacja".equals(value)) return RecipeCategory.DINNER else return RecipeCategory.OTHER
     }
 }

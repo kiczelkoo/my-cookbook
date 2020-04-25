@@ -1,6 +1,7 @@
 package gh.ok.mycookbook.store.recipe
 
 import gh.ok.mycookbook.domain.recipe.entity.Recipe
+import gh.ok.mycookbook.domain.recipe.entity.RecipeCategory
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.*
 import java.io.File
@@ -91,8 +92,8 @@ class RecipeRepositoryUnitTest {
         fun `should save recipes in separate directories`() {
             // given
             val expectedDirName = "2020-04-01"
-            val recipesPerDay = mapOf(expectedDirName to listOf(Recipe("sniadanie", "jajecznica"),
-                    Recipe("przekaska", "koktajl")))
+            val recipesPerDay = mapOf(expectedDirName to listOf(Recipe(RecipeCategory.BREAKFAST, "jajecznica"),
+                    Recipe(RecipeCategory.SNACK, "koktajl")))
             // when
             recipeRepository.saveAllRecipes(recipesPerDay)
             //end

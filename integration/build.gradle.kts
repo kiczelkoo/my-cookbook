@@ -10,6 +10,6 @@ dependencies {
     implementation(project(":domain:recipe"))
     implementation(project(":domain:user"))
 
-    implementation("org.seleniumhq.selenium:selenium-java:2.41.0")
+    implementation("org.seleniumhq.selenium:selenium-java:3.141.59")
     implementation(kotlin("stdlib-jdk8"))
 }
