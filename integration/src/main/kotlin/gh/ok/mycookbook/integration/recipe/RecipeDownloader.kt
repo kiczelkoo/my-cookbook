@@ -26,6 +26,7 @@ class RecipeDownloader(private val loginService: RecipeLoginService,
                 allMeals.put(DateCalculator.toString(start), recipes)
             } catch (exc: Exception) {
                 println("exc for day: $start: $exc")
+                exc.printStackTrace()
             }
             start = start.plusDays(1)
         }
