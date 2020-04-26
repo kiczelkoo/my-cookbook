@@ -36,7 +36,6 @@ class RecipeConverter {
                     allIngredients,
                     allDescriptions
             ))
-            println(recipes.last().toPrettyString())
         }
         return recipes
     }
