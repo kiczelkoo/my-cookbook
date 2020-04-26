@@ -7,7 +7,8 @@ data class DayPlan(val meals: List<Recipe>,
                    val kcal: String = "",
                    val proteinPercentage: Int = 0,
                    val carbohydratesPercentage: Int = 0,
-                   val fatsPercentage: Int = 0) {
+                   val fatsPercentage: Int = 0,
+                   val isOriginal: Boolean = true) {
 
     fun toPrettyString(): String {
         var value = "Day plan for $forDay\n"

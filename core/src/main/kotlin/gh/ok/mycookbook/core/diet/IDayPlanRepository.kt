@@ -6,4 +6,6 @@ interface IDayPlanRepository {
 
     fun saveAllOriginalDayPlans(dayPlans: List<DayPlan>)
 
+    fun findDayPlansForDates(dates: List<String>): List<DayPlan>
+
 }

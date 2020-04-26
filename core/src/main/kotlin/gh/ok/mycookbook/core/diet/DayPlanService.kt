@@ -1,24 +1,27 @@
 package gh.ok.mycookbook.core.diet
 
+import gh.ok.mycookbook.core.utils.DateCalculator
 import gh.ok.mycookbook.domain.diet.dayplan.entity.DayPlan
-import gh.ok.mycookbook.domain.groceries.product.Product
 import java.time.LocalDate
-import java.util.stream.Collectors
 
 class DayPlanService(private val dayPlanDownloader: IDayPlanDownloader,
                      private val dayPlanRepository: IDayPlanRepository) {
 
-    fun importOriginalDayPlans(fromDate: LocalDate, toDate: LocalDate) {
+    fun importOriginalDayPlans(fromDate: LocalDate, toDate: LocalDate): List<DayPlan> {
         val dayPlansToSave: List<DayPlan> = dayPlanDownloader.downloadDayPlansForDates(fromDate, toDate)
-        dayPlansToSave.forEach {
-            dayPlanRepository.saveAllOriginalDayPlans(dayPlansToSave)
+        dayPlanRepository.saveAllOriginalDayPlans(dayPlansToSave)
+        return dayPlansToSave
+    }
+
+    fun getDayPlansForDates(fromDate: LocalDate, toDate: LocalDate): List<DayPlan> {
+        val dates = mutableListOf<String>()
+        val previous = fromDate
+        while (previous.isBefore(toDate)) {
+            dates.add(DateCalculator.toString(previous))
+            previous.plusDays(1)
         }
-        getAllProducts(dayPlansToSave)
+        dates.add(DateCalculator.toString(toDate))
+        val dayPlans = dayPlanRepository.findDayPlansForDates(dates)
+        if (!dayPlans.isEmpty()) return dayPlans else return importOriginalDayPlans(fromDate, toDate)
     }
-
-    fun getAllProducts(dayPlans: List<DayPlan>): Set<Product> {
-        return dayPlans.flatMap { it.meals }.flatMap { it.ingredients }.map { it.product }
-                .stream().collect(Collectors.toSet())
-    }
-
 }
