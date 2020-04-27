@@ -11,15 +11,16 @@ class RecipeHousekeeper(private val dayPlanService: DayPlanService) {
     // TODO remove just for testing
     @Scheduled(fixedDelay = 86400000)
     fun importRecipes() {
-        val startDay = LocalDate.of(2016, 7, 12)
-        val endDay = LocalDate.of(2016, 4, 26)
-        var current = startDay
-        while (current.isBefore(endDay)) {
-            val until = current.plusDays(7)
-            dayPlanService.importOriginalDayPlans(current, until)
+        val startDay = LocalDate.of(2020, 4, 22)
+        val endDay = LocalDate.of(2020, 4, 27)
+        var from = startDay
+        while (from.plusDays(7).isBefore(endDay)) {
+            dayPlanService.importOriginalDayPlans(from, from.plusDays(7))
+            from = from.plusDays(7)
+
         }
-        if (current.isAfter(endDay)) {
-            dayPlanService.importOriginalDayPlans(current, endDay)
+        if (from.plusDays(7).isAfter(endDay)) {
+            dayPlanService.importOriginalDayPlans(from, endDay)
         }
     }
 }
