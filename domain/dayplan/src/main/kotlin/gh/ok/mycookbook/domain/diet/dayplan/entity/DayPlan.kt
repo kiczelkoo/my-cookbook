@@ -10,6 +10,7 @@ data class DayPlan(val meals: List<Recipe>,
                    val fatsPercentage: Int = 0,
                    val isOriginal: Boolean = true) {
 
+    // TODO move to store module, because it's only required for savinig to file
     fun toPrettyString(): String {
         var value = "Day plan for $forDay\n"
         value += "$kcal kcal\n"

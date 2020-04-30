@@ -3,7 +3,7 @@ plugins {
 }
 
 dependencies {
-    implementation(project(":domain:diet"))
+    implementation(project(":domain:dayplan"))
     implementation(project(":domain:groceries"))
     implementation(project(":domain:recipe"))
     implementation(project(":domain:user"))

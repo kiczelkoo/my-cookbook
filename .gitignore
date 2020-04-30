@@ -3,7 +3,4 @@
 build
 /.idea/
 /.gradle/
-*/out/
-/domain/recipe/out/
-/domain/groceries/out/
-/domain/diet/out/
+out

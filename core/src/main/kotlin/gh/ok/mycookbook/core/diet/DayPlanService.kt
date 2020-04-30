@@ -14,6 +14,12 @@ class DayPlanService(private val dayPlanDownloader: IDayPlanDownloader,
     }
 
     fun getDayPlansForDates(fromDate: LocalDate, toDate: LocalDate): List<DayPlan> {
+        val dates = prepareDatesForGivenRange(fromDate, toDate)
+        val dayPlans = dayPlanRepository.findDayPlansForDates(dates)
+        if (!dayPlans.isEmpty()) return dayPlans else return importOriginalDayPlans(fromDate, toDate)
+    }
+
+    private fun prepareDatesForGivenRange(fromDate: LocalDate, toDate: LocalDate): List<String> {
         val dates = mutableListOf<String>()
         val previous = fromDate
         while (previous.isBefore(toDate)) {
@@ -21,7 +27,6 @@ class DayPlanService(private val dayPlanDownloader: IDayPlanDownloader,
             previous.plusDays(1)
         }
         dates.add(DateCalculator.toString(toDate))
-        val dayPlans = dayPlanRepository.findDayPlansForDates(dates)
-        if (!dayPlans.isEmpty()) return dayPlans else return importOriginalDayPlans(fromDate, toDate)
+        return dates
     }
 }
