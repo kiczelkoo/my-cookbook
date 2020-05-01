@@ -13,7 +13,7 @@ class RecipeConverter {
             val dishes = it.split("DISH")
 
             val allIngredients = mutableListOf<Ingredient>()
-            val allDescriptions = mutableMapOf<String, List<String>>()
+            val allDescriptions = mutableMapOf<String, MutableList<String>>()
 
             var recipeName = ""
 
@@ -45,7 +45,7 @@ class RecipeConverter {
 
     }
 
-    private fun extractDescriptions(dish: String): Map<String, List<String>> {
+    private fun extractDescriptions(dish: String): Map<String, MutableList<String>> {
         val dishLines: List<String> = dish.split("\n").filter { filterMeaningfulLines(it) }
         if (!dishLines.isEmpty()) {
             val descIndx = dishLines.indexOf("Sposób przygotowania:")

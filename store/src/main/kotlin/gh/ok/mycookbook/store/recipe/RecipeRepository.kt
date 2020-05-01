@@ -6,11 +6,13 @@ import java.io.File
 
 class RecipeRepository(private val location: String) : IRecipeRepository {
 
+    val recipeConverter: RecipeConverter = RecipeConverter()
+
     override fun saveRecipes(path: String, recipes: List<Recipe>) {
         recipes.forEachIndexed{index, recipe ->
             val file = File("$path/$index-${recipe.category}.txt")
                     .also { file -> file.parentFile.mkdirs() }
-            file.writeText(recipe.toPrettyString())
+            file.writeText(recipeConverter.createRecipeFileContent(recipe))
         }
     }
 }
