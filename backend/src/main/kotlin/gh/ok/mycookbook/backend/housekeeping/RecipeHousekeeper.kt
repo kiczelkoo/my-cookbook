@@ -9,7 +9,7 @@ import java.time.LocalDate
 class RecipeHousekeeper(private val dayPlanService: DayPlanService) {
 
     // TODO remove just for testing
-    @Scheduled(fixedDelay = 86400000)
+//    @Scheduled(fixedDelay = 86400000)
     fun importRecipes() {
         val startDay = LocalDate.of(2020, 4, 22)
         val endDay = LocalDate.of(2020, 4, 27)
