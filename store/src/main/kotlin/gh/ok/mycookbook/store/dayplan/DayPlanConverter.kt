@@ -6,14 +6,20 @@ import java.io.File
 
 class DayPlanConverter {
 
+    private val FATS_PREFIX = "fats:"
+    private val CARBS_PREFIX = "carbs:"
+    private val DAY_PREFIX = "day:"
+    private val KCAL_PREFIX = "kcal:"
+    private val PROTEINS_PREFIX = "proteins:"
+
     val recipeConverter: RecipeConverter = RecipeConverter()
 
     fun getSummaryContent(dayPlan: DayPlan): String {
-        var value = "day:${dayPlan.forDay}\n"
-        value += "kcal:${dayPlan.kcal}\n"
-        value += "proteins:${dayPlan.proteinPercentage}\n"
-        value += "carbs:${dayPlan.carbohydratesPercentage}\n"
-        value += "fats:${dayPlan.fatsPercentage}\n"
+        var value = "$DAY_PREFIX${dayPlan.forDay}\n"
+        value += "$KCAL_PREFIX${dayPlan.kcal}\n"
+        value += "$PROTEINS_PREFIX${dayPlan.proteinPercentage}\n"
+        value += "$CARBS_PREFIX${dayPlan.carbohydratesPercentage}\n"
+        value += "$FATS_PREFIX${dayPlan.fatsPercentage}\n"
         return value
     }
 
@@ -25,11 +31,11 @@ class DayPlanConverter {
         var carbs = 0
         var fats = 0
         summaryFiles.get(0).forEachLine {
-            if (it.contains("day:")) forDay = it.replace("day:", "")
-            if (it.contains("kcal:")) kcal = it.replace("kcal:", "")
-            if (it.contains("proteins:")) proteins = it.replace("proteins:", "").toInt()
-            if (it.contains("carbs:")) carbs = it.replace("carbs:", "").toInt()
-            if (it.contains("fats:")) fats = it.replace("fats:", "").toInt()
+            if (it.contains(DAY_PREFIX)) forDay = it.replace(DAY_PREFIX, "")
+            if (it.contains(KCAL_PREFIX)) kcal = it.replace(KCAL_PREFIX, "")
+            if (it.contains(PROTEINS_PREFIX)) proteins = it.replace(PROTEINS_PREFIX, "").toInt()
+            if (it.contains(CARBS_PREFIX)) carbs = it.replace(CARBS_PREFIX, "").toInt()
+            if (it.contains(FATS_PREFIX)) fats = it.replace(FATS_PREFIX, "").toInt()
 
         }
         return DayPlan(recipes, forDay, kcal, proteins, carbs, fats)

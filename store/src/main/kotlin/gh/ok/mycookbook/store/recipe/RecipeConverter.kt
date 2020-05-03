@@ -8,25 +8,37 @@ import java.io.File
 
 class RecipeConverter {
 
+    private val CATEGORY_KEY="category:"
+    private val KCAL_KEY="kcal:"
+    private val NUTRIENCE_KEY="nutrience:"
+    private val TIME_KEY="prepTime:"
+    private val RECIPE_KEY="recipeName:"
+    private val AMOUNT_SEPARATOR="###"
+    private val DESCRIPTION_KEY="Description:"
+    private val MEAL_KEY="mealName:"
+    
     fun createRecipeFileContent(recipe: Recipe): String {
         var value = ""
-        value += "category:${recipe.category}kcal:${recipe.kcal}\n"
-        value += "nutrience:${recipe.nutrience}\n"
-        value += "prepTime:${recipe.prepTime}\n"
-        value += "recipeName:${recipe.recipeName}\n"
+        value += createLine(CATEGORY_KEY, recipe.category)
+        value += createLine(KCAL_KEY, recipe.kcal)
+        value += createLine(NUTRIENCE_KEY, recipe.nutrience)
+        value += createLine(TIME_KEY, recipe.prepTime)
+        value += createLine(RECIPE_KEY,recipe.recipeName)
         recipe.ingredients.forEach {
-            value += "${it.product.name}###${it.amount}\n"
+            value += createLine("${it.product.name}$AMOUNT_SEPARATOR", it.amount)
         }
-        value += "Description:\n"
+        value += createLine(DESCRIPTION_KEY, "")
         recipe.descriptions.forEach { name, description ->
-            value += "name: $name\n"
+            value += createLine(MEAL_KEY,name)
             description.forEach {
-                value += "$name$$$$it\n"
+                value += createLine(name, it)
             }
 
         }
         return value
     }
+
+    private fun createLine(key: String, value: Any) = "$key$value\n"
 
     fun createRecipesFromFiles(recipesFiles: List<File>): List<Recipe> {
         val recipes = mutableListOf<Recipe>()
@@ -46,47 +58,49 @@ class RecipeConverter {
 
         val lines = file.useLines { it.toList() }
         lines.forEachIndexed { index, str ->
-            if (str.contains("category:")) category = extractCategory(str)
-            if (str.contains("kcal:")) kcal = extractKcal(str)
-            if (str.contains("nutrience:")) nutrience = str.replace("nutrience:", "")
-            if (str.contains("prepTime:")) prepTime = str.replace("prepTime:", "")
-            if (str.contains("recipeName:")) recipeName = str.replace("recipeName:", "")
-            if (str.contains("###")) ingredients.add(createIngredient(str))
-            if (str.contains("Description:")) indexOfDesc = index
+            if (str.contains(CATEGORY_KEY)) category = extractValue(str, CATEGORY_KEY)
+            if (str.contains(KCAL_KEY)) kcal = extractValue(str, KCAL_KEY)
+            if (str.contains(NUTRIENCE_KEY)) nutrience = extractValue(str, NUTRIENCE_KEY)
+            if (str.contains(TIME_KEY)) prepTime = extractValue(str, TIME_KEY)
+            if (str.contains(RECIPE_KEY)) recipeName = extractValue(str, RECIPE_KEY)
+            if (str.contains(AMOUNT_SEPARATOR)) ingredients.add(extractIngredient(str))
+            if (str.contains(DESCRIPTION_KEY)) indexOfDesc = index
         }
-        lines.subList(indexOfDesc, lines.size - 1).forEach {
-            if (it.contains("name:")) {
-                descriptions.put(it.replace("name:", ""), mutableListOf())
+        val descriptionsLines = lines.subList(indexOfDesc, lines.size - 1)
+
+        descriptionsLines.forEach {
+            if (it.contains(MEAL_KEY)) {
+                val mealName = extractValue(it, MEAL_KEY)
+                descriptions.put(mealName, extractDescription(mealName, descriptionsLines))
             }
-            if (it.contains("$$$")) addToDescription(descriptions, it)
         }
-        return Recipe(RecipeCategory.valueOf(category),
-                recipeName,
-                kcal,
-                nutrience,
-                prepTime,
-                ingredients,
-                descriptions)
+        return Recipe(
+            RecipeCategory.valueOf(category),
+            recipeName,
+            kcal,
+            nutrience,
+            prepTime,
+            ingredients,
+            descriptions
+        )
 
     }
 
-    private fun extractCategory(line: String): String {
-        return line.replace("category:", "$").replace("kcal:", "$").split("$").filter { it.isNotEmpty() }.get(0)
+    private fun extractDescription(mealName: String, lines: List<String>): MutableList<String> {
+        val description = mutableListOf<String>()
+        lines.map {
+            if (!it.contains(MEAL_KEY) && it.contains(mealName)) {
+                description.add(extractValue(it, mealName))
+            }
+        }
+        return description
     }
 
-    private fun extractKcal(line: String): String {
-        return line.replace("category:", "$").replace("kcal:", "$").split("$").filter { it.isNotEmpty() }.get(1)
-    }
-
-    private fun addToDescription(descriptions: MutableMap<String, MutableList<String>>, line: String) {
-        val descriptionLine = line.split("$$$")
-        descriptions.get(descriptionLine.get(0))?.add(descriptionLine.get(1))
-    }
-
-
-    private fun createIngredient(ingredientLine: String): Ingredient {
-        val ingredientCompounds = ingredientLine.split("###")
+    private fun extractIngredient(ingredientLine: String): Ingredient {
+        val ingredientCompounds = ingredientLine.split(AMOUNT_SEPARATOR)
         return Ingredient(Product(ingredientCompounds.get(0)), ingredientCompounds.get(1))
     }
+
+    private fun extractValue(line: String, key: String) = line.replace(key, "").trim()
 
 }

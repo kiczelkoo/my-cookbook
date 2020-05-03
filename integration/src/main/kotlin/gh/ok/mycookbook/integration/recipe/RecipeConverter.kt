@@ -4,13 +4,15 @@ import gh.ok.mycookbook.domain.groceries.product.Product
 import gh.ok.mycookbook.domain.recipe.entity.Ingredient
 import gh.ok.mycookbook.domain.recipe.entity.Recipe
 import gh.ok.mycookbook.domain.recipe.entity.RecipeCategory
+import gh.ok.mycookbook.integration.dayplan.DISH_SEPARATOR
 
 class RecipeConverter {
+    private val DESCRIPTION = "Sposób przygotowania:"
 
     fun toRecipes(meals: List<String>): MutableList<Recipe> {
         val recipes = mutableListOf<Recipe>()
         meals.forEach {
-            val dishes = it.split("DISH")
+            val dishes = it.split(DISH_SEPARATOR)
 
             val allIngredients = mutableListOf<Ingredient>()
             val allDescriptions = mutableMapOf<String, MutableList<String>>()
@@ -48,7 +50,7 @@ class RecipeConverter {
     private fun extractDescriptions(dish: String): Map<String, MutableList<String>> {
         val dishLines: List<String> = dish.split("\n").filter { filterMeaningfulLines(it) }
         if (!dishLines.isEmpty()) {
-            val descIndx = dishLines.indexOf("Sposób przygotowania:")
+            val descIndx = dishLines.indexOf(DESCRIPTION)
             val numOfLines = dishLines.size
             val ingrEndIndx = if (descIndx > 0 && descIndx <= numOfLines) descIndx else numOfLines
             val descStartIndx = if (ingrEndIndx + 1 < numOfLines) ingrEndIndx + 1 else numOfLines
@@ -61,7 +63,7 @@ class RecipeConverter {
     private fun extractIngredients(dish: String): List<Ingredient> {
         val dishLines: List<String> = dish.split("\n").filter { filterMeaningfulLines(it) }
         if (!dishLines.isEmpty()) {
-            val descIndx = dishLines.indexOf("Sposób przygotowania:")
+            val descIndx = dishLines.indexOf(DESCRIPTION)
             val numOfLines = dishLines.size
             val ingrEndIndx = if (descIndx > 0 && descIndx <= numOfLines) descIndx else numOfLines
             val ingredients = dishLines.subList(1, ingrEndIndx)

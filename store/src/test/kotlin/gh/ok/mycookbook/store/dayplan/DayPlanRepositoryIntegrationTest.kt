@@ -18,7 +18,7 @@ class DayPlanRepositoryIntegrationTest {
 
         @Test
         fun `should return found day plans`() {
-            dayPlanRepository.findDayPlansForDates(listOf("2019-12-10", "2019-12-11", "2019-12-12"))
+            dayPlanRepository.findDayPlans(listOf("2019-12-10", "2019-12-11", "2019-12-12"))
         }
     }
 }
