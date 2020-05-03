@@ -8,6 +8,8 @@ import gh.ok.mycookbook.integration.dayplan.DISH_SEPARATOR
 
 class RecipeConverter {
     private val DESCRIPTION = "Sposób przygotowania:"
+    private val PIPE = "|"
+    private val COLON = ":"
 
     fun toRecipes(meals: List<String>): MutableList<Recipe> {
         val recipes = mutableListOf<Recipe>()
@@ -15,7 +17,7 @@ class RecipeConverter {
             val dishes = it.split(DISH_SEPARATOR)
 
             val allIngredients = mutableListOf<Ingredient>()
-            val allDescriptions = mutableMapOf<String, MutableList<String>>()
+            val allDescriptions = mutableMapOf<String, List<String>>()
 
             var recipeName = ""
 
@@ -29,7 +31,8 @@ class RecipeConverter {
                 }
             }
 
-            recipes.add(Recipe(
+            recipes.add(
+                Recipe(
                     extractCategory(dishes.first()),
                     recipeName,
                     extractKcal(dishes.first()),
@@ -37,7 +40,8 @@ class RecipeConverter {
                     extractPrepTime(dishes.first()),
                     allIngredients,
                     allDescriptions
-            ))
+                )
+            )
         }
         return recipes
     }
@@ -47,7 +51,7 @@ class RecipeConverter {
 
     }
 
-    private fun extractDescriptions(dish: String): Map<String, MutableList<String>> {
+    private fun extractDescriptions(dish: String): Map<String, List<String>> {
         val dishLines: List<String> = dish.split("\n").filter { filterMeaningfulLines(it) }
         if (!dishLines.isEmpty()) {
             val descIndx = dishLines.indexOf(DESCRIPTION)
@@ -72,7 +76,7 @@ class RecipeConverter {
         return emptyList()
     }
 
-    private fun mapDescription(preparation: List<String>): MutableList<String> {
+    private fun mapDescription(preparation: List<String>): List<String> {
         val description = mutableListOf<String>()
         if (!preparation.isEmpty()) {
             preparation.forEachIndexed { count, line ->
@@ -82,7 +86,7 @@ class RecipeConverter {
         return description
     }
 
-    private fun mapIngredients(ingredients: List<String>): MutableList<Ingredient> {
+    private fun mapIngredients(ingredients: List<String>): List<Ingredient> {
         val ingredientsList = mutableListOf<Ingredient>()
         var amount = ""
         ingredients.forEachIndexed { index, line ->
@@ -104,21 +108,23 @@ class RecipeConverter {
             && !line.toUpperCase().contains("PRZYPRAWY")
 
 
-    private fun extractCategory(line: String): RecipeCategory {
-        return mapToRecipeCategory(line.substring(0, line.indexOf(":")).trim())
-    }
+    private fun extractCategory(line: String) =
+        mapToRecipeCategory(line.substring(0, line.indexOf(COLON)).trim())
 
-    private fun extractKcal(line: String): String {
-        return line.substring(line.indexOf(":"), line.indexOf("|")).replace(":", "").trim()
-    }
 
-    private fun extractNutrience(line: String): String {
-        return line.substring(line.indexOf("|"), line.lastIndexOf("|")).replace("|", "").trim()
-    }
+    private fun extractKcal(line: String) =
+        line.substring(line.indexOf(COLON), line.indexOf(PIPE)).replace(COLON, "")
+            .replace("kcal", "").trim()
 
-    private fun extractPrepTime(line: String): String {
-        return line.substring(line.lastIndexOf("|")).replace("Czas przygotowania", "").replace("|", "").trim()
-    }
+
+    private fun extractNutrience(line: String) =
+        line.substring(line.indexOf(PIPE), line.lastIndexOf(PIPE)).replace(PIPE, "").trim()
+
+
+    private fun extractPrepTime(line: String) =
+        line.substring(line.lastIndexOf(PIPE)).replace("Czas przygotowania", "").replace(PIPE, "")
+            .trim()
+
 
     private fun mapToRecipeCategory(value: String): RecipeCategory {
         if ("Śniadanie".equals(value)) return RecipeCategory.BREAKFAST

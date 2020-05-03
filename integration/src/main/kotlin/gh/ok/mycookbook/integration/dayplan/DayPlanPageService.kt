@@ -7,6 +7,7 @@ import org.openqa.selenium.WebElement
 import org.openqa.selenium.chrome.ChromeDriver
 import org.openqa.selenium.support.ui.ExpectedConditions
 import org.openqa.selenium.support.ui.WebDriverWait
+import java.io.File
 import java.time.LocalDate
 import java.util.regex.Pattern
 import java.util.stream.Collectors
@@ -35,6 +36,7 @@ class DayPlanPageService {
                 )
                 return emptyList()
             }
+            saveRawHtml(driver, date)
             driver.findElementsByCssSelector(MEALS_SELECTOR).forEach {
                 allMeals.add(getMeal(it))
             }
@@ -81,7 +83,7 @@ class DayPlanPageService {
         }
     }
 
-    fun getMeal(mealElement: WebElement): String {
+    private fun getMeal(mealElement: WebElement): String {
         var meal =
             mealElement.findElements(By.cssSelector(MEAL_SUMMARY_SELECTOR)).first().text + "\n"
         mealElement.findElements(By.cssSelector(DISH_SELECTOR)).forEach {
@@ -91,4 +93,10 @@ class DayPlanPageService {
         return meal
     }
 
+    // todo just temporary code - new concept oF download data
+    private fun saveRawHtml(driver: ChromeDriver, date: LocalDate) {
+        val file = File("/home/olga/Documents/przepisy/hpba-diet/${DateCalculator.toString(date)}.html")
+            .also { file -> file.parentFile.mkdirs() }
+        file.writeText(driver.pageSource)
+    }
 }
