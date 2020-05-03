@@ -10,8 +10,7 @@ class RecipeConverter {
 
     fun createRecipeFileContent(recipe: Recipe): String {
         var value = ""
-        value += "category:${recipe.category}"
-        value += "kcal:${recipe.kcal}\n"
+        value += "category:${recipe.category}kcal:${recipe.kcal}\n"
         value += "nutrience:${recipe.nutrience}\n"
         value += "prepTime:${recipe.prepTime}\n"
         value += "recipeName:${recipe.recipeName}\n"
@@ -47,8 +46,8 @@ class RecipeConverter {
 
         val lines = file.useLines { it.toList() }
         lines.forEachIndexed { index, str ->
-            if (str.contains("category:")) category = str.replace("category:", "")
-            if (str.contains("kcal:")) kcal = str.replace("kcal:", "")
+            if (str.contains("category:")) category = extractCategory(str)
+            if (str.contains("kcal:")) kcal = extractKcal(str)
             if (str.contains("nutrience:")) nutrience = str.replace("nutrience:", "")
             if (str.contains("prepTime:")) prepTime = str.replace("prepTime:", "")
             if (str.contains("recipeName:")) recipeName = str.replace("recipeName:", "")
@@ -56,10 +55,8 @@ class RecipeConverter {
             if (str.contains("Description:")) indexOfDesc = index
         }
         lines.subList(indexOfDesc, lines.size - 1).forEach {
-            var name = ""
             if (it.contains("name:")) {
-                name = it.replace("name:", "")
-                descriptions.put(name, mutableListOf())
+                descriptions.put(it.replace("name:", ""), mutableListOf())
             }
             if (it.contains("$$$")) addToDescription(descriptions, it)
         }
@@ -71,6 +68,14 @@ class RecipeConverter {
                 ingredients,
                 descriptions)
 
+    }
+
+    private fun extractCategory(line: String): String {
+        return line.replace("category:", "$").replace("kcal:", "$").split("$").filter { it.isNotEmpty() }.get(0)
+    }
+
+    private fun extractKcal(line: String): String {
+        return line.replace("category:", "$").replace("kcal:", "$").split("$").filter { it.isNotEmpty() }.get(1)
     }
 
     private fun addToDescription(descriptions: MutableMap<String, MutableList<String>>, line: String) {

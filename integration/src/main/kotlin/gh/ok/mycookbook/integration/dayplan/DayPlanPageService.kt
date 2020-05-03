@@ -26,6 +26,10 @@ class DayPlanPageService {
         try {
             driver.get(DAY_PLAN_BASE_URL.plus(DateCalculator.toString(date)))
             wait.until(ExpectedConditions.textMatches(By.cssSelector(KCAL), KCAL_PATTERN))
+            if (!isProperPageOpened(driver, date)) {
+                println("not correct url ${driver.currentUrl} ${DAY_PLAN_BASE_URL.plus(DateCalculator.toString(date))}")
+                return emptyList()
+            }
             driver.findElementsByCssSelector(MEALS_SELECTOR).forEach {
                 allMeals.add(getMeal(it))
             }
@@ -37,12 +41,19 @@ class DayPlanPageService {
         }
     }
 
+    private fun isProperPageOpened(driver: ChromeDriver, date: LocalDate)
+            = driver.currentUrl.contains(DateCalculator.toString(date))
+
     fun getDayPlanSummary(driver: ChromeDriver, date: LocalDate): List<String> {
         val summary = mutableListOf<String>()
         val wait = WebDriverWait(driver, 10)
         try {
             driver.get(DAY_PLAN_BASE_URL.plus(DateCalculator.toString(date)))
             wait.until(ExpectedConditions.numberOfElementsToBe(By.cssSelector(KCAL_VALUES_SELECTOR), 4))
+            if (!isProperPageOpened(driver, date)) {
+                println("not correct url ${driver.currentUrl} ${DAY_PLAN_BASE_URL.plus(DateCalculator.toString(date))}")
+                return emptyList()
+            }
             summary.add(driver.findElementsByCssSelector(KCAL_VALUES_SELECTOR)
                     .map { it.text }.stream().collect(Collectors.joining()))
             summary.addAll(driver.findElementsByCssSelector(DAY_PLAN_SUMMARY_SELECTOR).map { it.text })
