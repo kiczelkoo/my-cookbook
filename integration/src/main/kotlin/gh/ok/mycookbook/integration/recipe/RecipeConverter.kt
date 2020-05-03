@@ -7,74 +7,57 @@ import gh.ok.mycookbook.domain.recipe.entity.RecipeCategory
 import gh.ok.mycookbook.integration.dayplan.DISH_SEPARATOR
 
 class RecipeConverter {
+
     private val DESCRIPTION = "Sposób przygotowania:"
+    private val MEAL_FOR_FEW_DAYS = "Przepis na"
     private val PIPE = "|"
     private val COLON = ":"
 
-    fun toRecipes(meals: List<String>): MutableList<Recipe> {
+    fun toRecipes(mealsLines: List<String>): MutableList<Recipe> {
         val recipes = mutableListOf<Recipe>()
-        meals.forEach {
-            val dishes = it.split(DISH_SEPARATOR)
-
-            val allIngredients = mutableListOf<Ingredient>()
-            val allDescriptions = mutableMapOf<String, List<String>>()
-
-            var recipeName = ""
-
-            dishes.forEachIndexed { index, dish ->
-                if (index == 1) {
-                    recipeName = extractRecipeName(dish)
-                }
-                if (index > 0) {
-                    allIngredients.addAll(extractIngredients(dish))
-                    allDescriptions.putAll(extractDescriptions(dish))
-                }
-            }
-
-            recipes.add(
-                Recipe(
-                    extractCategory(dishes.first()),
-                    recipeName,
-                    extractKcal(dishes.first()),
-                    extractNutrience(dishes.first()),
-                    extractPrepTime(dishes.first()),
-                    allIngredients,
-                    allDescriptions
-                )
-            )
+        mealsLines.forEach {
+            recipes.add(createRecipeFromLines(it))
         }
         return recipes
     }
 
-    private fun extractRecipeName(dish: String): String {
-        return dish.split("\n").filter { filterMeaningfulLines(it) }.first()
+    private fun createRecipeFromLines(dishes: String): Recipe {
+        val dishesLines = dishes.split(DISH_SEPARATOR)
+        val summaryLine = dishesLines.first()
+        val recipeName = dishesLines.get(1).split("\n").filter { filterMeaningfulLines(it) }.first()
 
-    }
+        val allIngredients = mutableListOf<Ingredient>()
+        val allDescriptions = mutableMapOf<String, List<String>>()
 
-    private fun extractDescriptions(dish: String): Map<String, List<String>> {
-        val dishLines: List<String> = dish.split("\n").filter { filterMeaningfulLines(it) }
-        if (!dishLines.isEmpty()) {
-            val descIndx = dishLines.indexOf(DESCRIPTION)
-            val numOfLines = dishLines.size
-            val ingrEndIndx = if (descIndx > 0 && descIndx <= numOfLines) descIndx else numOfLines
-            val descStartIndx = if (ingrEndIndx + 1 < numOfLines) ingrEndIndx + 1 else numOfLines
-            val preparation = dishLines.subList(descStartIndx, numOfLines)
-            return mapOf(dishLines.first() to mapDescription(preparation))
+        dishesLines.subList(1, dishesLines.size - 1).forEach {
+            val dish = it.split("\n").filter { filterMeaningfulLines(it) }
+            if (dish.isNotEmpty()) {
+                val descriptionStartIndx = getIndexOfLastIngredientLine(dish)
+                allIngredients.addAll(mapIngredients(dish.subList(1, descriptionStartIndx)))
+                allDescriptions.putAll(
+                    mapOf(dish.first() to mapDescription(dish.subList(descriptionStartIndx, dish.size)))
+                )
+            }
         }
-        return emptyMap()
+        return Recipe(
+            extractCategory(summaryLine),
+            recipeName,
+            extractKcal(summaryLine),
+            extractNutrience(summaryLine),
+            extractPrepTime(summaryLine),
+            allIngredients,
+            allDescriptions)
     }
 
-    private fun extractIngredients(dish: String): List<Ingredient> {
-        val dishLines: List<String> = dish.split("\n").filter { filterMeaningfulLines(it) }
-        if (!dishLines.isEmpty()) {
-            val descIndx = dishLines.indexOf(DESCRIPTION)
-            val numOfLines = dishLines.size
-            val ingrEndIndx = if (descIndx > 0 && descIndx <= numOfLines) descIndx else numOfLines
-            val ingredients = dishLines.subList(1, ingrEndIndx)
-            return mapIngredients(ingredients)
+    private fun getIndexOfLastIngredientLine(dish: List<String>): Int {
+        var descriptionStartIndx = -1
+        dish.forEachIndexed { i, str ->
+            if (str.contains(DESCRIPTION) || str.contains(MEAL_FOR_FEW_DAYS)) descriptionStartIndx =
+                i
         }
-        return emptyList()
+        return if (descriptionStartIndx > 0) descriptionStartIndx else dish.size - 1
     }
+
 
     private fun mapDescription(preparation: List<String>): List<String> {
         val description = mutableListOf<String>()
