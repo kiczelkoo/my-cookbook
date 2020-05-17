@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PlannerDialogComponent } from './planner-dialog.component';
+import { DayPlanComponent } from './day-plan.component';
 
-describe('PlannerDialogComponent', () => {
-  let component: PlannerDialogComponent;
-  let fixture: ComponentFixture<PlannerDialogComponent>;
+describe('DayPlanComponent', () => {
+  let component: DayPlanComponent;
+  let fixture: ComponentFixture<DayPlanComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PlannerDialogComponent ]
+      declarations: [ DayPlanComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PlannerDialogComponent);
+    fixture = TestBed.createComponent(DayPlanComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
