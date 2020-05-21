@@ -15,6 +15,7 @@ export type Recipe = {
     prot: Amount;
     carbs: Amount;
     fats: Amount;
+    time?: string
     description: Description[];
     ingredients: Ingredient[];
 }
@@ -27,7 +28,7 @@ export type Description = {
 export type Ingredient = {
     product: string;
     amount: Amount;
-    stdAmount: Amount;
+    stdAmount?: Amount;
 }
 
 export type Amount = {

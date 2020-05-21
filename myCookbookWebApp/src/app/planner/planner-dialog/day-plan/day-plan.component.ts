@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { DayPlan } from '../day-plan-model';
 
 @Component({
   selector: 'mc-app-day-plan',
@@ -7,7 +8,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DayPlanComponent implements OnInit {
 
-  dayPlan: string
+  @Input()
+  dayPlan: DayPlan
 
   constructor() { }
 
