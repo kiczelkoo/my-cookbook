@@ -1,1 +1,3 @@
-<p>timeline works!</p>
+<div *ngFor="let date of displaydDates">
+    <button (click)="onSelectDate(date)">{{ date.shortDate }}</button>
+</div>
