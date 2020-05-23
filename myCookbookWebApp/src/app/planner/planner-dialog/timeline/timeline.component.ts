@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { formatDate } from '@angular/common';
 import { DateModel } from './date-model';
+import { toLongDateFormat, toShortDateFormat, calculateTimeRange } from '../../date-util';
 
 @Component({
   selector: 'mc-app-timeline',
@@ -9,36 +10,35 @@ import { DateModel } from './date-model';
 })
 export class TimelineComponent implements OnInit {
 
+  @Output() newDateSelected = new EventEmitter<Date>();
+
   displaydDates: DateModel[] = [];
 
   constructor() { }
 
   ngOnInit(): void {
     const now = new Date();
-    this.generateDateRanges(now);
+    this.generateDatesInRange(now);
+    this.newDateSelected.emit(now);
   }
 
   onSelectDate(newSelectedDate: DateModel) {
-    console.log(newSelectedDate);
     this.displaydDates = [];
-    this.generateDateRanges(newSelectedDate.date);
+    this.generateDatesInRange(newSelectedDate.date);
+    this.newDateSelected.emit(newSelectedDate.date);
   }
 
-  private generateDateRanges(selected: Date) {
+  private generateDatesInRange(selected: Date) {
     const dateRangeShift: number = 4;
-
-    const from = new Date(selected);
-    from.setDate(selected.getDate() - dateRangeShift)
-
-    const to = new Date(selected);
-    to.setDate(selected.getDate() + dateRangeShift)
-
+    const timeRange: [Date, Date] = calculateTimeRange(selected, dateRangeShift);
+    const from = timeRange[0];
+    const to = timeRange[1];
     while (from <= to) {
       this.displaydDates.push({
         date: new Date(from),
-        longDate: formatDate(from, 'yyyy-MM-dd', 'en'),
-        shortDate: formatDate(from, 'dd.MM', 'en'),
-        isSelected: formatDate(from, 'yyyy-MM-dd', 'en') === formatDate(selected, 'yyyy-MM-dd', 'en')
+        longDate: toLongDateFormat(from),
+        shortDate: toShortDateFormat(from),
+        isSelected: toLongDateFormat(from) === toLongDateFormat(selected)
       });
       from.setDate(from.getDate() + 1);
     }

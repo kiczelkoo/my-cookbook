@@ -1,3 +1,2 @@
-<button (click)="onShowDayPlanClick()">Show Day Plan</button>
-<mc-app-timeline></mc-app-timeline>
+<mc-app-timeline (newDateSelected)=onNewDateSelected($event)></mc-app-timeline>
 <mc-app-day-plan [dayPlan]="currentDayPlan"></mc-app-day-plan>

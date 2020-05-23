@@ -9,7 +9,8 @@ export class DayPlanService {
 
   constructor() { }
 
-  getDayPlansForDates(): Observable<DayPlan[]> {
+  getDayPlansForDates(fromDate: string, toDate: string): Observable<DayPlan[]> {
+    console.log('send request for day plans for dates: ', fromDate, toDate)
     return of([dayPlan1])
   }
 }

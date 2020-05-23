@@ -3,6 +3,7 @@ import { DayPlanService } from './day-plan.service';
 import { DayPlan } from './day-plan-model';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators'
+import { toLongDateFormat, calculateTimeRange } from '../date-util';
 
 
 @Component({
@@ -21,24 +22,21 @@ export class PlannerDialogComponent implements OnInit {
   constructor(private dayplanService: DayPlanService) { }
 
   ngOnInit(): void {
-    this.getDayPlans('2020-05-18', '202-05-24');
   }
 
-  getDayPlans(fromDate: string, toDate: string) {
-    this.dayplanService.getDayPlansForDates()
-    .pipe(takeUntil(this.destroySubject))
-    .subscribe(dayPlans => {
-      console.log('found some day plans', dayPlans)
-      this.dayPlans = dayPlans;
-    })
+  onNewDateSelected(selectedDate: Date) {
+    const timeRange: [Date, Date] = calculateTimeRange(selectedDate, 4);
+    const fromDate = toLongDateFormat(timeRange[0]);
+    const toDate = toLongDateFormat(timeRange[1]);
+    this.dayplanService.getDayPlansForDates(fromDate, toDate)
+      .pipe(takeUntil(this.destroySubject))
+      .subscribe(dayPlans => {
+        this.dayPlans = dayPlans;
+        this.currentDayPlan = this.getCurrentDayPlan(selectedDate);
+      });
   }
 
-  onShowDayPlanClick() {
-    if (this.dayPlans && this.dayPlans.length > 0) {
-      this.currentDayPlan = this.dayPlans[0]
-    }
+  private getCurrentDayPlan(selectedDate: Date): DayPlan {
+    return this.dayPlans[0];
   }
-
-
-
 }
