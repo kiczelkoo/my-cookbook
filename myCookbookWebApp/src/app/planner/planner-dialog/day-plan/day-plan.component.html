@@ -1,4 +1,4 @@
-<section *ngIf="dayPlan">
+<section class="container-fluid" *ngIf="dayPlan">
     <mc-app-summary [summary]="dayPlan.summary"></mc-app-summary>
     <section *ngFor="let meal of dayPlan.meals">
         <mc-app-meal [meal]="meal"></mc-app-meal>

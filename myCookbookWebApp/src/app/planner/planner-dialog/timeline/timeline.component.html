@@ -1,3 +1,9 @@
-<div *ngFor="let date of displaydDates">
-    <button (click)="onSelectDate(date)">{{ date.shortDate }}</button>
-</div>
+<nav class="container-fluid row" >
+    <div class="col" *ngFor="let date of displaydDates">
+        <!-- <span class="col">inline button</span> -->
+        <button type="button" class="btn"
+        [ngClass]="{'btn-outline-light text-dark': !date.isSelected, 'btn-outline-dark': date.isSelected}"
+        style="display: inline-block;"
+        (click)="onSelectDate(date)">{{ date.shortDate }}</button>
+    </div>
+</nav>
