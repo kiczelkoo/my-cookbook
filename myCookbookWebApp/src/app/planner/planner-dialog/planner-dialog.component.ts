@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { DayPlanService } from './day-plan.service';
-import { DayPlan } from './day-plan-model';
+import { DayPlan } from './day-plan/day-plan-model';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators'
 import { toLongDateFormat, calculateTimeRange } from '../date-util';
+import { DayPlanService } from './day-plan/day-plan.service';
 
 
 @Component({

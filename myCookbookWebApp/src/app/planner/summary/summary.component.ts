@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Summary } from '../planner-dialog/day-plan-model';
+import { Summary } from '../planner-dialog/day-plan/day-plan-model';
 
 @Component({
   selector: 'mc-app-summary',

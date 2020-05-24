@@ -49,7 +49,6 @@ const snackOne: Recipe = {
   carbs: { amount: 42, unit: 'g' }},
   time: '<15 min.',
   ingredients: [{ product: 'Banan', amount: { amount: 0.5, unit: 'szt' }, stdAmount: { amount: 100, unit: 'g' } },
-  { product: 'Banan', amount: { amount: 0.5, unit: 'szt' }, stdAmount: { amount: 100, unit: 'g' } },
   { product: 'Mleko migdałowe', amount: { amount: 0.5, unit: 'szklanki' }, stdAmount: { amount: 120, unit: 'ml' } },
   { product: 'Daktyle suszone niesiarkowane', amount: { amount: 3, unit: 'szt' }, stdAmount: { amount: 15, unit: 'g' } },
   { product: 'Kakao gorzkie', amount: { amount: 2, unit: 'łyżeczki' }, stdAmount: { amount: 10, unit: 'g' } },

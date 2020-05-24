@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { DayPlan } from '../day-plan-model';
+import { DayPlan } from './day-plan-model';
 
 @Component({
   selector: 'mc-app-day-plan',

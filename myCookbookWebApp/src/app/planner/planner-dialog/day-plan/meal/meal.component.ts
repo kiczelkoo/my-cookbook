@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Recipe } from '../../day-plan-model';
+import { Recipe } from '../day-plan-model';
 
 @Component({
   selector: 'mc-app-meal',
