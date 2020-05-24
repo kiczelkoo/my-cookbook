@@ -18,10 +18,10 @@ export class DayPlanService {
 const breakfast: Recipe = {
   category: 'BREAKFAST',
   name: 'Omlet z marchewką',
-  kcal: 294,
+  summary: {kcal: 294,
   carbs: { amount: 10, unit: 'g' },
-  prot: { amount: 24, unit: 'g' },
-  fats: { amount: 18, unit: 'g' },
+  prots: { amount: 24, unit: 'g' },
+  fats: { amount: 18, unit: 'g' }},
   time: '<15 min.',
   ingredients: [{ product: 'Jaja kurze małe, rozmiar S', amount: { amount: 3, unit: 'szt' }, stdAmount: { amount: 150, unit: 'g' } },
   { product: 'Białko jaja kurzego', amount: { amount: 1, unit: 'szt' }, stdAmount: { amount: 35, unit: 'g' } },
@@ -43,10 +43,10 @@ const breakfast: Recipe = {
 const snackOne: Recipe = {
   category: 'SNACK',
   name: 'Koktajl migdałowo-kakaowy',
-  kcal: 244,
-  prot: { amount: 5, unit: 'g' },
+  summary: {kcal: 244,
+  prots: { amount: 5, unit: 'g' },
   fats: { amount: 6, unit: 'g' },
-  carbs: { amount: 42, unit: 'g' },
+  carbs: { amount: 42, unit: 'g' }},
   time: '<15 min.',
   ingredients: [{ product: 'Banan', amount: { amount: 0.5, unit: 'szt' }, stdAmount: { amount: 100, unit: 'g' } },
   { product: 'Banan', amount: { amount: 0.5, unit: 'szt' }, stdAmount: { amount: 100, unit: 'g' } },
@@ -65,12 +65,12 @@ const snackOne: Recipe = {
 
 const lunch: Recipe = {
   category: 'LUNCH',
-  kcal: 446,
   time: '<45 min.',
   name: 'Grillowany łosoś w sosie z cytryny',
-  prot: { amount: 36, unit: 'g' },
+  summary: {kcal: 446,
+  prots: { amount: 36, unit: 'g' },
   fats: { amount: 28, unit: 'g' },
-  carbs: { amount: 13, unit: 'g' },
+  carbs: { amount: 13, unit: 'g' }},
   ingredients: [
     { product: 'Łosoś świeży', amount: { amount: 175, unit: 'g' } },
     { product: 'Sok pomarańczowy, świeżo wyciśnięty', amount: { amount: 3, unit: 'łyżki' }, stdAmount: { amount: 18, unit: 'ml' } },
@@ -99,11 +99,11 @@ const lunch: Recipe = {
 
 const snackTwo: Recipe = {
   category: 'SNACK',
-  kcal: 186,
   name: 'Krem z buraków z gruszką',
-  prot: { amount: 6, unit: 'g' },
+  summary: {kcal: 186,
+  prots: { amount: 6, unit: 'g' },
   fats: { amount: 1, unit: 'g' },
-  carbs: { amount: 49, unit: 'g' },
+  carbs: { amount: 49, unit: 'g' }},
   ingredients: [{ product: 'Burak', amount: { amount: 1.5, unit: 'szt' }, stdAmount: { amount: 158, unit: 'g' } },
   { product: 'Marchew', amount: { amount: 1, unit: 'szt' }, stdAmount: { amount: 45, unit: 'g' } },
   { product: 'Pietruszka korzeń', amount: { amount: 1, unit: 'szt' }, stdAmount: { amount: 80, unit: 'g' } },
@@ -132,12 +132,12 @@ const snackTwo: Recipe = {
 
 const dinner: Recipe = {
   category: 'DINNER',
-  kcal: 265,
   time: '<15 min.',
   name: 'Pasta brokułowa',
-  prot: { amount: 10, unit: 'g' },
+  summary: {kcal: 265,
+  prots: { amount: 10, unit: 'g' },
   fats: { amount: 5, unit: 'g' },
-  carbs: { amount: 53, unit: 'g' },
+  carbs: { amount: 53, unit: 'g' }},
   ingredients: [{ product: 'Brokuły', amount: { amount: 0.3, unit: 'szt' }, stdAmount: { amount: 167, unit: 'g' } },
   { product: 'Czosnek', amount: { amount: 1, unit: 'ząbek' }, stdAmount: { amount: 5, unit: 'g' } },
   { product: 'Oliwa z oliwek extra virgin', amount: { amount: 0.75, unit: 'łyżeczki' }, stdAmount: { amount: 4, unit: 'g' } },
@@ -149,10 +149,10 @@ const dinner: Recipe = {
 }
 
 const dayPlan1: DayPlan = {
-  kcal: 1436,
+  summary: {kcal: 1436,
   carbs: { amount: 44, unit: '%' },
-  prot: { amount: 21, unit: '%' },
-  fats: { amount: 35, unit: '%' },
+  prots: { amount: 21, unit: '%' },
+  fats: { amount: 35, unit: '%' }},
   day: '2016-08-03', meals: [breakfast, snackOne, lunch, snackTwo, dinner]
 }
 

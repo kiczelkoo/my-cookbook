@@ -37,6 +37,7 @@ export class PlannerDialogComponent implements OnInit {
   }
 
   private getCurrentDayPlan(selectedDate: Date): DayPlan {
+    // TODO logic to select day plan with the same date as selectedDates
     return this.dayPlans[0];
   }
 }

@@ -1,0 +1,14 @@
+<!--todo improve structure, extract decription and ingredients-->
+<p><span>{{meal.category}}: </span><span>{{meal.name}}</span><span *ngIf="meal.time"> | {{meal.time}}</span></p>
+<mc-app-summary [summary]="meal.summary"></mc-app-summary>
+<p>Produkty:</p>
+<div *ngFor="let ingredient of meal.ingredients">
+    <span>{{ingredient.product}} : {{ingredient.amount.amount}} {{ingredient.amount.unit}}</span>
+</div>
+<p>Sposób przygotowania:</p>
+<div *ngFor="let desc of meal.description">
+    <p>{{desc.name}}</p>
+    <div *ngFor="let instr of desc.instructions">
+        <span>{{instr}}</span>
+    </div>
+</div>

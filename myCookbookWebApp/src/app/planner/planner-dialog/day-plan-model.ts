@@ -1,23 +1,24 @@
+// TODO in future some types could be moved to shared module
 export type DayPlan = {
-    kcal: number;
-    day: string;
-    prot: Amount;
-    carbs: Amount;
-    fats: Amount;    
+    summary: Summary;    
     meals: Recipe[];
+    day: string;
 };
 
-// TODO in future could be moved to shared module
 export type Recipe = {
     category: string;
     name: string;
-    kcal: number;
-    prot: Amount;
-    carbs: Amount;
-    fats: Amount;
+    summary: Summary;
     time?: string
     description: Description[];
     ingredients: Ingredient[];
+}
+
+export type Summary = {
+    kcal: number;
+    prots: Amount;
+    carbs: Amount;
+    fats: Amount;
 }
 
 export type Description = {
@@ -35,3 +36,4 @@ export type Amount = {
     amount: number;
     unit: string;
 }
+

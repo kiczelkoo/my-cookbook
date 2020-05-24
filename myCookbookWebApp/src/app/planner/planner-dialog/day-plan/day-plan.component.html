@@ -1,2 +1,6 @@
-<p>day-plan works!</p>
-<div *ngIf="dayPlan">{{dayPlan.day}}</div>
+<section *ngIf="dayPlan">
+    <mc-app-summary [summary]="dayPlan.summary"></mc-app-summary>
+    <section *ngFor="let meal of dayPlan.meals">
+        <mc-app-meal [meal]="meal"></mc-app-meal>
+    </section>
+</section>
