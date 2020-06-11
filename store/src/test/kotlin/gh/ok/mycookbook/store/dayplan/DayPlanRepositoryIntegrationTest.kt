@@ -1,6 +1,6 @@
 package gh.ok.mycookbook.store.dayplan
 
-import gh.ok.mycookbook.core.diet.IDayPlanRepository
+import gh.ok.mycookbook.core.dayplan.IDayPlanRepository
 import gh.ok.mycookbook.core.recipe.IRecipeRepository
 import gh.ok.mycookbook.store.recipe.RecipeRepository
 import org.junit.jupiter.api.Nested

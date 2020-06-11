@@ -1,6 +1,6 @@
 package gh.ok.mycookbook.store.dayplan
 
-import gh.ok.mycookbook.core.diet.IDayPlanRepository
+import gh.ok.mycookbook.core.dayplan.IDayPlanRepository
 import gh.ok.mycookbook.core.recipe.IRecipeRepository
 import gh.ok.mycookbook.domain.diet.dayplan.entity.DayPlan
 import gh.ok.mycookbook.store.CUSTOM_PLAN_LOCATION

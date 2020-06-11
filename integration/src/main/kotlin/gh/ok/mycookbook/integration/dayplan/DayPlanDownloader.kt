@@ -1,6 +1,6 @@
 package gh.ok.mycookbook.integration.dayplan
 
-import gh.ok.mycookbook.core.diet.IDayPlanDownloader
+import gh.ok.mycookbook.core.dayplan.IDayPlanDownloader
 import gh.ok.mycookbook.domain.diet.dayplan.entity.DayPlan
 import gh.ok.mycookbook.integration.recipe.RecipeConverter
 import org.openqa.selenium.chrome.ChromeDriver

@@ -1,6 +1,6 @@
 package gh.ok.mycookbook.backend.housekeeping
 
-import gh.ok.mycookbook.core.diet.DayPlanService
+import gh.ok.mycookbook.core.dayplan.DayPlanService
 import org.springframework.scheduling.annotation.Scheduled
 import org.springframework.stereotype.Component
 import java.time.LocalDate

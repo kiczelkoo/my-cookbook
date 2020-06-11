@@ -1,6 +1,6 @@
 package gh.ok.mycookbook.backend.dayplan
 
-import gh.ok.mycookbook.core.diet.DayPlanService
+import gh.ok.mycookbook.core.dayplan.DayPlanService
 import gh.ok.mycookbook.core.utils.DateCalculator
 import gh.ok.mycookbook.domain.diet.dayplan.entity.DayPlan
 import kotlinx.coroutines.flow.Flow

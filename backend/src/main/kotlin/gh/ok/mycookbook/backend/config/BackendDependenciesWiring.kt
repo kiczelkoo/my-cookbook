@@ -1,7 +1,7 @@
 package gh.ok.mycookbook.backend.config
 
-import gh.ok.mycookbook.core.diet.DayPlanService
-import gh.ok.mycookbook.core.diet.IDayPlanRepository
+import gh.ok.mycookbook.core.dayplan.DayPlanService
+import gh.ok.mycookbook.core.dayplan.IDayPlanRepository
 import gh.ok.mycookbook.core.recipe.IRecipeRepository
 import gh.ok.mycookbook.integration.dayplan.DayPlanDownloader
 import gh.ok.mycookbook.store.dayplan.DayPlanRepository

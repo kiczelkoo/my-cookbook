@@ -1,4 +1,4 @@
-package gh.ok.mycookbook.core.diet
+package gh.ok.mycookbook.core.dayplan
 
 import gh.ok.mycookbook.core.utils.DateCalculator
 import gh.ok.mycookbook.domain.diet.dayplan.entity.DayPlan
