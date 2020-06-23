@@ -1,27 +1,36 @@
 package gh.ok.mycookbook.backend.housekeeping
 
-import gh.ok.mycookbook.core.dayplan.DayPlanService
+import gh.ok.mycookbook.core.dayplan.IDayPlanDownloader
+import org.springframework.scheduling.annotation.Async
 import org.springframework.scheduling.annotation.Scheduled
 import org.springframework.stereotype.Component
 import java.time.LocalDate
 
 @Component
-class DayPlanHousekeeper(private val dayPlanService: DayPlanService) {
+class DayPlanHousekeeper(private val dayPlanDownloader: IDayPlanDownloader) {
 
-    // TODO remove just for testing
     @Scheduled(fixedDelay = 86400000)
-    fun importAllDayPlans() {
+    fun downloadDayPlans() {
+        // TODO other way to calculate dates
         val startDay = LocalDate.of(2016, 7, 12)
         val endDay = LocalDate.of(2020, 5, 3)
         var from = startDay
         while (from.plusDays(7).isBefore(endDay)) {
-            dayPlanService.importOriginalDayPlans(from, from.plusDays(7))
+            dayPlanDownloader.downloadDayPlansForDates(from, from.plusDays(7))
+            importDayPlans(from, from.plusDays(7))
             from = from.plusDays(7)
 
         }
         if (from.plusDays(7).isAfter(endDay)) {
-            dayPlanService.importOriginalDayPlans(from, endDay)
+            dayPlanDownloader.downloadDayPlansForDates(from, endDay)
         }
+    }
+
+
+    @Async
+    private fun importDayPlans(from: LocalDate, plusDays: LocalDate) {
+        println("import new day plans")
+        // TODO implement
     }
 
 }

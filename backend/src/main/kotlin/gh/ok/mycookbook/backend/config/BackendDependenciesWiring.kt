@@ -1,6 +1,7 @@
 package gh.ok.mycookbook.backend.config
 
 import gh.ok.mycookbook.core.dayplan.DayPlanService
+import gh.ok.mycookbook.core.dayplan.IDayPlanDownloader
 import gh.ok.mycookbook.core.dayplan.IDayPlanRepository
 import gh.ok.mycookbook.core.recipe.IRecipeRepository
 import gh.ok.mycookbook.integration.dayplan.DayPlanDownloader
@@ -20,7 +21,7 @@ class BackendDependenciesWiring(
 
     @Bean
     fun dayPlanService(): DayPlanService {
-        return DayPlanService(dayPlanDownloader(), dayPlanRepository())
+        return DayPlanService(dayPlanRepository())
     }
 
     @Bean
@@ -34,8 +35,8 @@ class BackendDependenciesWiring(
     }
 
     @Bean
-    fun dayPlanDownloader(): DayPlanDownloader {
-        return DayPlanDownloader(DayPlanLoginService(userName, password), DayPlanPageService())
+    fun dayPlanDownloader(): IDayPlanDownloader {
+        return DayPlanDownloader(DayPlanLoginService(userName, password), DayPlanPageService(), dayPlanRepository())
     }
 
 }

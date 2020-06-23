@@ -5,18 +5,11 @@ import gh.ok.mycookbook.domain.diet.dayplan.entity.DayPlan
 import kotlinx.coroutines.flow.Flow
 import java.time.LocalDate
 
-class DayPlanService(private val dayPlanDownloader: IDayPlanDownloader,
-                     private val dayPlanRepository: IDayPlanRepository) {
+class DayPlanService(private val dayPlanRepository: IDayPlanRepository) {
 
     fun getDayPlans(fromDate: LocalDate, toDate: LocalDate): Flow<DayPlan> {
         val dates = prepareDatesForGivenRange(fromDate, toDate)
         return dayPlanRepository.findDayPlans(dates)
-    }
-
-    fun importOriginalDayPlans(fromDate: LocalDate, toDate: LocalDate): List<DayPlan> {
-        val dayPlansToSave: List<DayPlan> = dayPlanDownloader.downloadDayPlansForDates(fromDate, toDate)
-        dayPlanRepository.saveAllOriginalDayPlans(dayPlansToSave)
-        return dayPlansToSave
     }
 
     private fun prepareDatesForGivenRange(fromDate: LocalDate, toDate: LocalDate): List<String> {
