@@ -5,4 +5,6 @@ import java.time.LocalDate
 interface IDayPlanDownloader {
 
     fun downloadDayPlansForDates(from: LocalDate, to: LocalDate)
+
+    fun convertToDayPlan()
 }
