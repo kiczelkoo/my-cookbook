@@ -1,4 +1,4 @@
-package gh.ok.mycookbook.backend.config
+package gh.ok.mycookbook.application.config
 
 import gh.ok.mycookbook.core.dayplan.DayPlanService
 import gh.ok.mycookbook.core.dayplan.IDayPlanDownloader

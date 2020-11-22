@@ -1,4 +1,4 @@
-package gh.ok.mycookbook.backend.housekeeping
+package gh.ok.mycookbook.application.housekeeping
 
 import gh.ok.mycookbook.core.dayplan.IDayPlanDownloader
 import org.springframework.scheduling.annotation.Async

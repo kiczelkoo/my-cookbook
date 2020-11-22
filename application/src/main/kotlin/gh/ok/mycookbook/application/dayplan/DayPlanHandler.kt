@@ -1,4 +1,4 @@
-package gh.ok.mycookbook.backend.dayplan
+package gh.ok.mycookbook.application.dayplan
 
 import gh.ok.mycookbook.core.dayplan.DayPlanService
 import gh.ok.mycookbook.core.utils.DateCalculator

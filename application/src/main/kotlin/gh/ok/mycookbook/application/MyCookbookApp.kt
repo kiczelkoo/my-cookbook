@@ -1,4 +1,4 @@
-package gh.ok.mycookbook.backend
+package gh.ok.mycookbook.application
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication

@@ -3,17 +3,15 @@ package gh.ok.mycookbook.integration.dayplan
 import gh.ok.mycookbook.core.dayplan.IDayPlanDownloader
 import gh.ok.mycookbook.core.dayplan.IDayPlanRepository
 import gh.ok.mycookbook.core.utils.DateCalculator
-import gh.ok.mycookbook.domain.recipe.entity.Ingredient
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
 import org.jsoup.nodes.Element
-import org.jsoup.select.Elements
 import org.openqa.selenium.chrome.ChromeDriver
 import pl.mfcookbook.core.services.DayPlanLoginService
 import pl.mfcookbook.core.services.DayPlanPageService
 import java.time.LocalDate
 
-
+// todo it'll be refactored during implementation of import task
 class DayPlanDownloader(
     private val loginService: DayPlanLoginService,
     private val dayPlanPageService: DayPlanPageService,
