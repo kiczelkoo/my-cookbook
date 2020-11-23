@@ -1,0 +1,414 @@
+{
+    "date":"23-11-2020",
+    "kcal":1457,
+    "proteins":21,
+    "carbs":41,
+    "fats":38,
+    "meals":[
+        {
+            "count":1,
+            "category":"BREAKFAST",
+            "kcal":363,
+            "proteins":23,
+            "carbs":22,
+            "fats":20,
+            "prepareTime":15,
+            "recipes":[
+                {
+                    "title":"Szakszuka z suszonymi pomidorami",
+                    "ingredients":[
+                        {
+                            "name":"Olej kokosowy extra virgin",
+                            "amount":0.33,
+                            "unit":"łyżeczka",
+                            "amountSI":5,
+                            "unitSI":"g"
+                        },
+                        {
+                            "name":"Cebula",
+                            "amount":0.25,
+                            "unit":"sztuka",
+                            "amountSI":28,
+                            "unitSI":"g"
+                        },
+                        {
+                            "name":"Czosnek",
+                            "amount":1,
+                            "unit":"ząbek",
+                            "amountSI":5,
+                            "unitSI":"g"
+                        },
+                        {
+                            "name":"Suszone pomidory",
+                            "amount":3,
+                            "unit":"plaster",
+                            "amountSI":21,
+                            "unitSI":"g"
+                        },
+                        {
+                            "name":"Pomidory krojone w sosie własnym",
+                            "amount":0.75,
+                            "unit":"szklanka",
+                            "amountSI":180,
+                            "unitSI":"g"
+                        },
+                        {
+                            "name":"Jaja kurze małe, rozmiar S",
+                            "amount":3,
+                            "unit":"sztuka",
+                            "amountSI":150,
+                            "unitSI":"g"
+                        },
+                        {
+                            "name":"Szczypiorek",
+                            "amount":1,
+                            "unit":"łyżka",
+                            "amountSI":5,
+                            "unitSI":"g"
+                        },
+                        {
+                            "name":"Sól morska",
+                            "amount":1,
+                            "unit":"szczypta"
+                        },
+                        {
+                            "name":"Pieprz cayenne",
+                            "amount":1,
+                            "unit":"szczypta"
+                        },
+                        {
+                            "name":"Oregano suszone",
+                            "amount":1,
+                            "unit":"szczypta"
+                        }
+                    ],
+                    "description":{
+                        "1":"Na rozgrzanym tłuszczu podsmaż pokrojoną w kostkę cebulę i przeciśnięty przez praskę czosnek.",
+                        "2":"Dodaj pomidory suszone pokrojone w paski, przyprawy i pomidory krojone w sosie własnym. Całość wymieszaj.",
+                        "3":"Na pomidory wbij jajka i smaż pod przykryciem, aż zetną się białka.",
+                        "4":"Gotową szakszukę posyp posiekanym szczypiorkiem."
+                    }
+                },
+                {
+                    "title":"Herbata",
+                    "ingredients":[
+                        {
+                            "name":"Herbata ziołowa",
+                            "amount":1,
+                            "unit":"szklanka",
+                            "amountSI":240,
+                            "unitSI":"ml"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "count":1,
+            "category":"SNACK",
+            "kcal":209,
+            "proteins":2,
+            "carbs":44,
+            "fats":5,
+            "prepareTime":15,
+            "recipes":[
+                {
+                    "title":"Smoothie jabłkowo - malinowe",
+                    "ingredients":[
+                        {
+                            "name":"Jabłko",
+                            "amount":1.5,
+                            "unit":"sztuka",
+                            "amountSI":225,
+                            "unitSI":"g"
+                        },
+                        {
+                            "name":"Limonka",
+                            "amount":0.5,
+                            "unit":"sztuka",
+                            "amountSI":50,
+                            "unitSI":"g"
+                        },
+                        {
+                            "name":"Wiórki kokosowe",
+                            "amount":1,
+                            "unit":"łyżka",
+                            "amountSI":6,
+                            "unitSI":"g"
+                        },
+                        {
+                            "name":"Cukier kokosowy",
+                            "amount":0.5,
+                            "unit":"łyżeczka",
+                            "amountSI":5,
+                            "unitSI":"g"
+                        },
+                        {
+                            "name":"Imbir świeży",
+                            "amount":1,
+                            "unit":"plaster",
+                            "amountSI":10,
+                            "unitSI":"g"
+                        },
+                        {
+                            "name":"Malina Lio Shake",
+                            "amount":1,
+                            "unit":"łyżka",
+                            "amountSI":8,
+                            "unitSI":"g"
+                        }
+                    ],
+                    "description":{
+                        "1":"Składniki zblenduj z dodatkiem wody - ilość wody dopasuj do pożądanej konsystencji smoothie."
+                    }
+                }
+            ]
+        },
+        {
+            "count":1,
+            "category":"LUNCH",
+            "kcal":452,
+            "proteins":23,
+            "carbs":53,
+            "fats":18,
+            "prepareTime":30,
+            "recipes":[
+                {
+                    "title":"Pad thai z tofu",
+                    "ingredients":[
+                        {
+                            "name":"Makaron ryżowy",
+                            "amountSI":40,
+                            "unitSI":"g"
+                        },
+                        {
+                            "name":"Cebula",
+                            "amount":0.25,
+                            "unit":"sztuka",
+                            "amountSI":28,
+                            "unitSI":"g"
+                        },
+                        {
+                            "name":"Olej kokosowy extra virgin",
+                            "amount":0.25,
+                            "unit":"łyżeczki",
+                            "amountSI":4,
+                            "unitSI":"g"
+                        },
+                        {
+                            "name":"Marchew",
+                            "amount":0.5,
+                            "unit":"sztuki",
+                            "amountSI":23,
+                            "unitSI":"g"
+                        },
+                        {
+                            "name":"Papryka czerwona",
+                            "amount":0.5,
+                            "unit":"sztuki",
+                            "amountSI":115,
+                            "unitSI":"g"
+                        },
+                        {
+                            "name":"Tofu naturalne",
+                            "amountSI":130,
+                            "unitSI":"g"
+                        },
+                        {
+                            "name":"Ekologiczne masło migdałowe",
+                            "amount":0.5,
+                            "unit":"łyżeczki",
+                            "amountSI":5,
+                            "unitSI":"g"
+                        },
+                        {
+                            "name":"Limonka",
+                            "amount":0.5,
+                            "unit":"sztuki",
+                            "amountSI":50,
+                            "unitSI":"g"
+                        },
+                        {
+                            "name":"Szczypiorek",
+                            "amount":1,
+                            "unit":"łyżka",
+                            "amountSI":5,
+                            "unitSI":"g"
+                        },
+                        {
+                            "name":"Imbir świeży",
+                            "amount":1,
+                            "unit":"plaster",
+                            "amountSI":10,
+                            "unitSI":"g"
+                        },
+                        {
+                            "name":"Sos sojowy (tamari, bezglutenowy)",
+                            "amount":1,
+                            "unit":"łyżeczka",
+                            "amountSI":5,
+                            "unitSI":"ml"
+                        },
+                        {
+                            "name":"Curry",
+                            "amount":2,
+                            "unit":"szczypta"
+                        },
+                        {
+                            "name":"Kolendra świeża",
+                            "amount":1,
+                            "unit":"łyżeczka",
+                            "amountSI":6,
+                            "unitSI":"g"
+                        }
+                    ],
+                    "description":{
+                        "1":"Makaron ugotuj według przepisu na opakowaniu.",
+                        "2":"Cebulę, posiekaj i podsmaż na patelni na rozgrzanym tłuszczu.",
+                        "3":"Marchew, i paprykę pokrój w paski i dodaj do podsmażonej cebuli. Całość smaż przez kolejne 3-4 minuty.",
+                        "4":"Tofu, pokrój w kostkę i dodaj do warzyw.",
+                        "5":"Przygotuj, sos. W naczyniu połącz starty imbir, masło orzechowe, sok z limonki, sos sojowy i curry.",
+                        "6":"Na, patelnię dodaj odsączony makaron oraz sos, wymieszaj i duś przez około 2 minuty.",
+                        "7":"Danie, przełóż na talerz, posyp posiekanym szczypiorkiem i kolendrą."
+                    }
+                },
+                {
+                    "title":"Woda mineralna",
+                    "ingredients":[
+                        {
+                            "name":"Woda",
+                            "amount":1,
+                            "unit":"szklanka",
+                            "amountSI":240,
+                            "unitSI":"ml"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "count":1,
+            "category":"SNACK",
+            "kcal":134,
+            "proteins":3,
+            "carbs":24,
+            "fats":1,
+            "prepareTime":5,
+            "recipes":[
+                {
+                    "title":"Owsianka z suszonymi śliwkami",
+                    "ingredients":[
+                        {
+                            "name":"Płatki owsiane bezglutenowe",
+                            "amount":2.5,
+                            "unit":"łyżki",
+                            "amountSI":25,
+                            "unitSI":"g"
+                        },
+                        {
+                            "name":"Śliwki suszone",
+                            "amount":1.5,
+                            "unit":"sztuki",
+                            "amountSI":11,
+                            "unitSI":"g"
+                        },
+                        {
+                            "name":"Cynamon mielony",
+                            "amount":1,
+                            "unit":"szczypta"
+                        },
+                        {
+                            "name":"Malina Lio shake",
+                            "amount":1,
+                            "unit":"łyżeczka",
+                            "amountSI":4,
+                            "unitSI":"g"
+                        }
+                    ],
+                    "description":{
+                        "1":"Do garnka wlej wodę i dodaj namoczone płatki.",
+                        "2":"Całość zagotuj, następnie zmniejsz ogień i gotuj aż do miękkości.",
+                        "3":"Dodaj pokrojone w paski śliwki, pozostałe składniki i całość wymieszaj.",
+                        "4":"Owsiankę przełóż do miski."
+                    }
+                },
+                {
+                    "title":"Woda mineralna",
+                    "ingredients":[
+                        {
+                            "name":"Woda",
+                            "amount":1,
+                            "unit":"szklanka",
+                            "amountSI":240,
+                            "unitSI":"ml"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "count":1,
+            "category":"DINNER",
+            "kcal":299,
+            "proteins":25,
+            "carbs":10,
+            "fats":18,
+            "prepareTime":15,
+            "recipes":[
+                {
+                    "title":"Łosoś z burakami",
+                    "ingredients":[
+                        {
+                            "name":"Łosoś świeży",
+                            "amountSI":120,
+                            "unitSI":"g"
+                        },
+                        {
+                            "name":"Limonka",
+                            "amount":0.25,
+                            "unit":"sztuki",
+                            "amountSI":25,
+                            "unitSI":"g"
+                        },
+                        {
+                            "name":"Buraki gotowane",
+                            "amount":0.5,
+                            "unit":"sztuki",
+                            "amountSI":60,
+                            "unitSI":"g"
+                        },
+                        {
+                            "name":"Czosnek",
+                            "amount":0.5,
+                            "unit":"ząbek",
+                            "amountSI":3,
+                            "unitSI":"g"
+                        },
+                        {
+                            "name":"Sól morska",
+                            "amount":1,
+                            "unit":"szczypta"
+                        },
+                        {
+                            "name":"Pieprz czarny",
+                            "amount":1,
+                            "unit":"szczypta"
+                        },
+                        {
+                            "name":"Zioła prowansalskie",
+                            "amount":1,
+                            "unit":"szczypta"
+                        },
+                        {
+                            "name":"Ocet balsamiczny",
+                            "amount":0.5,
+                            "unit":"łyżeczki",
+                            "amountSI":1.5,
+                            "unitSI":"ml"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

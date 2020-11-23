@@ -25,7 +25,7 @@ class DayPlanHousekeeper(private val dayPlanDownloader: IDayPlanDownloader) {
 //        }
 //    }
 
-    @Scheduled(fixedDelay = 86400000)
+//    @Scheduled(fixedDelay = 86400000)
     fun downloadDayPlans() {
      dayPlanDownloader.convertToDayPlan()
     }

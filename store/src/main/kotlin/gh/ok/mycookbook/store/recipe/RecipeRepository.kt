@@ -10,7 +10,7 @@ class RecipeRepository(private val location: String) : IRecipeRepository {
 
     override fun saveRecipes(path: String, recipes: List<Recipe>) {
         recipes.forEachIndexed { index, recipe ->
-            val file = File("$path/$index-${recipe.category}.txt")
+            val file = File("$path/$index-${recipe.title}.txt")
                 .also { file -> file.parentFile.mkdirs() }
             file.writeText(recipeConverter.createRecipeFileContent(recipe))
         }

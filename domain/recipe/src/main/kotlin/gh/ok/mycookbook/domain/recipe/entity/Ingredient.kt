@@ -1,5 +1,9 @@
 package gh.ok.mycookbook.domain.recipe.entity
 
-import gh.ok.mycookbook.domain.groceries.product.Product
-
-data class Ingredient(val product: Product, val amount: String)
+data class Ingredient(
+    val productName: String,
+    val amount: Int = 0,
+    val unit: IngredientUnit?,
+    val amountSi: Int = 0,
+    val unitSi: IngredientUnitSi?
+)

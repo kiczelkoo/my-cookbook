@@ -21,7 +21,7 @@ class DayPlanRepository(
 
     override fun saveAllOriginalDayPlans(dayPlans: List<DayPlan>) {
         dayPlans.forEach { dayPlan ->
-            val dayPlanPath = "$dayPlansLocation$ORIGINAL_PLAN_LOCATION/${dayPlan.forDay}/"
+            val dayPlanPath = "$dayPlansLocation$ORIGINAL_PLAN_LOCATION/${dayPlan.date}/"
             val file = File("$dayPlanPath/$DAY_PLAN_SUMMARY_FILE")
                 .also { file -> file.parentFile.mkdirs() }
             file.writeText(dayPlanConverter.getSummaryContent(dayPlan))
