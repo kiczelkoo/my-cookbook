@@ -1,53 +1,32 @@
 package gh.ok.mycookbook.store.dayplan
 
-import gh.ok.mycookbook.core.dayplan.IDayPlanRepository
-import gh.ok.mycookbook.core.recipe.IRecipeRepository
 import gh.ok.mycookbook.core.utils.DateCalculator
-import gh.ok.mycookbook.domain.diet.dayplan.entity.DayPlan
-import gh.ok.mycookbook.store.CUSTOM_PLAN_LOCATION
-import gh.ok.mycookbook.store.DAY_PLAN_SUMMARY_FILE
-import gh.ok.mycookbook.store.ORIGINAL_PLAN_LOCATION
-import gh.ok.mycookbook.store.RAW_DAY_PLANS
+import gh.ok.mycookbook.domain.dayplan.DayPlan
+import gh.ok.mycookbook.domain.dayplan.IDayPlanRepository
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import java.io.File
 import java.time.LocalDate
 
-class DayPlanRepository(
-    private val dayPlansLocation: String,
-    private val recipeRepository: IRecipeRepository
-) : IDayPlanRepository {
+class DayPlanRepository(private val dayPlansLocation: String) : IDayPlanRepository {
 
-    val dayPlanConverter = DayPlanConverter()
+    private val dayPlanJsonConverter: DayPlanJsonConverter = DayPlanJsonConverter()
 
-    override fun saveAllOriginalDayPlans(dayPlans: List<DayPlan>) {
-        dayPlans.forEach { dayPlan ->
-            val dayPlanPath = "$dayPlansLocation$ORIGINAL_PLAN_LOCATION/${dayPlan.date}/"
-            val file = File("$dayPlanPath/$DAY_PLAN_SUMMARY_FILE")
-                .also { file -> file.parentFile.mkdirs() }
-            file.writeText(dayPlanConverter.getSummaryContent(dayPlan))
-            recipeRepository.saveRecipes(dayPlanPath, dayPlan.meals)
-        }
-    }
-
-    override fun findDayPlans(dates: List<String>) = flow {
+    override fun getDayPlanForDates(dates: List<LocalDate>): Flow<DayPlan> = flow {
+        println("start method")
         dates.forEach { date ->
-            val files: Pair<List<File>, List<File>> =
-                readListOfFile(date).partition { it.name.equals(DAY_PLAN_SUMMARY_FILE) }
-            emit(dayPlanConverter.createDayplanFromFile(files.first, files.second))
+            val dateStr = DateCalculator.toString(date)
+            val file = File("$dayPlansLocation/$dateStr").listFiles().get(0)
+            emit(dayPlanJsonConverter.convertToDayPlan(file.readText()))
         }
     }
 
-    override fun saveRaw(html: String, date: LocalDate) {
-        val file = File("$dayPlansLocation$RAW_DAY_PLANS/${DateCalculator.toString(date)}.html")
-            .also { file -> file.parentFile.mkdirs() }
-        file.writeText(html)
+    fun getDayPlan(dates: List<LocalDate>) {
+        dates.forEach { date ->
+            val dateStr = DateCalculator.toString(date)
+            val file = File("$dayPlansLocation/$dateStr").listFiles().get(0)
+            println(dayPlanJsonConverter.convertToDayPlan(file.readText()))
+        }
     }
 
-    private fun readListOfFile(date: String): List<File> {
-        var foundFiles = File("$dayPlansLocation$CUSTOM_PLAN_LOCATION/$date").listFiles()
-        if (foundFiles == null || foundFiles.isEmpty()) {
-            foundFiles = File("$dayPlansLocation$ORIGINAL_PLAN_LOCATION/$date").listFiles()
-        }
-        if (foundFiles == null || foundFiles.isEmpty()) return emptyList() else return foundFiles.asList()
-    }
 }

@@ -1,8 +1,5 @@
 package gh.ok.mycookbook.store.recipe
 
-import gh.ok.mycookbook.domain.diet.dayplan.entity.MealCategory
-import gh.ok.mycookbook.domain.groceries.product.Product
-import gh.ok.mycookbook.domain.recipe.entity.Ingredient
 import gh.ok.mycookbook.domain.recipe.entity.Recipe
 import java.io.File
 

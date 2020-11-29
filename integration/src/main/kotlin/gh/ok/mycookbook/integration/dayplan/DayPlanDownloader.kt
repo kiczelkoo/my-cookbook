@@ -1,8 +1,8 @@
 package gh.ok.mycookbook.integration.dayplan
 
 import gh.ok.mycookbook.core.dayplan.IDayPlanDownloader
-import gh.ok.mycookbook.core.dayplan.IDayPlanRepository
 import gh.ok.mycookbook.core.utils.DateCalculator
+import gh.ok.mycookbook.domain.dayplan.IDayPlanRepository
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
 import org.jsoup.nodes.Element
@@ -25,7 +25,7 @@ class DayPlanDownloader(
         while (start.compareTo(to) <= 0) {
             val rawDayPlan = dayPlanPageService.getRawDayPLan(DateCalculator.toString(start), driver)
             if (rawDayPlan.isPresent) {
-                dayPlanRepository.saveRaw(rawDayPlan.get(), start)
+//                dayPlanRepository.saveRaw(rawDayPlan.get(), start)
             }
             start = start.plusDays(1)
         }

@@ -1,7 +1,7 @@
 package gh.ok.mycookbook.core.dayplan
 
-import gh.ok.mycookbook.core.utils.DateCalculator
-import gh.ok.mycookbook.domain.diet.dayplan.entity.DayPlan
+import gh.ok.mycookbook.domain.dayplan.DayPlan
+import gh.ok.mycookbook.domain.dayplan.IDayPlanRepository
 import kotlinx.coroutines.flow.Flow
 import java.time.LocalDate
 
@@ -9,18 +9,17 @@ class DayPlanService(private val dayPlanRepository: IDayPlanRepository) {
 
     fun getDayPlans(fromDate: LocalDate, toDate: LocalDate): Flow<DayPlan> {
         val dates = prepareDatesForGivenRange(fromDate, toDate)
-        return dayPlanRepository.findDayPlans(dates)
+        return dayPlanRepository.getDayPlanForDates(dates)
     }
 
-    private fun prepareDatesForGivenRange(fromDate: LocalDate, toDate: LocalDate): List<String> {
-        val dates = mutableListOf<String>()
+    private fun prepareDatesForGivenRange(fromDate: LocalDate, toDate: LocalDate): List<LocalDate> {
+        val dates = mutableListOf<LocalDate>()
         var previous = fromDate
         while (previous.isBefore(toDate)) {
-            println(DateCalculator.toString(previous))
-            dates.add(DateCalculator.toString(previous))
+            dates.add(previous)
             previous = previous.plusDays(1)
         }
-        dates.add(DateCalculator.toString(toDate))
+        dates.add(toDate)
         return dates
     }
 

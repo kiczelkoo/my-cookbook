@@ -2,7 +2,7 @@ package gh.ok.mycookbook.application.dayplan
 
 import gh.ok.mycookbook.core.dayplan.DayPlanService
 import gh.ok.mycookbook.core.utils.DateCalculator
-import gh.ok.mycookbook.domain.diet.dayplan.entity.DayPlan
+import gh.ok.mycookbook.domain.dayplan.DayPlan
 import kotlinx.coroutines.flow.Flow
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory

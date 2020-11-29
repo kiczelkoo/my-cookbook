@@ -2,8 +2,8 @@ package gh.ok.mycookbook.application.config
 
 import gh.ok.mycookbook.core.dayplan.DayPlanService
 import gh.ok.mycookbook.core.dayplan.IDayPlanDownloader
-import gh.ok.mycookbook.core.dayplan.IDayPlanRepository
 import gh.ok.mycookbook.core.recipe.IRecipeRepository
+import gh.ok.mycookbook.domain.dayplan.IDayPlanRepository
 import gh.ok.mycookbook.integration.dayplan.DayPlanDownloader
 import gh.ok.mycookbook.store.dayplan.DayPlanRepository
 import gh.ok.mycookbook.store.recipe.RecipeRepository
@@ -15,9 +15,10 @@ import pl.mfcookbook.core.services.DayPlanPageService
 
 @Configuration
 class BackendDependenciesWiring(
-        @Value("\${integration.diet.plan.user}") private val userName: String,
-        @Value("\${integration.diet.plan.pswd}") private val password: String,
-        @Value("\${store.recipes.location}") private val location: String) {
+    @Value("\${integration.diet.plan.user}") private val userName: String,
+    @Value("\${integration.diet.plan.pswd}") private val password: String,
+    @Value("\${store.recipes.location}") private val location: String
+) {
 
     @Bean
     fun dayPlanService(): DayPlanService {
@@ -26,7 +27,7 @@ class BackendDependenciesWiring(
 
     @Bean
     fun dayPlanRepository(): IDayPlanRepository {
-        return DayPlanRepository(location, recipeRepository())
+        return DayPlanRepository(location)
     }
 
     @Bean
