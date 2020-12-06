@@ -5,10 +5,9 @@ import gh.ok.mycookbook.domain.dayplan.DayPlan
 import gh.ok.mycookbook.domain.dayplan.IDayPlanRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
-import java.io.File
 import java.time.LocalDate
 
-class DayPlanRepository(private val dayPlansLocation: String) : IDayPlanRepository {
+class DayPlanFileRepository(private val dayPlansLocation: String) : IDayPlanRepository {
 
     private val dayPlanJsonConverter: DayPlanJsonConverter = DayPlanJsonConverter()
 
@@ -16,17 +15,15 @@ class DayPlanRepository(private val dayPlansLocation: String) : IDayPlanReposito
         println("start method")
         dates.forEach { date ->
             val dateStr = DateCalculator.toString(date)
-            val file = File("$dayPlansLocation/$dateStr").listFiles().get(0)
-            emit(dayPlanJsonConverter.convertToDayPlan(file.readText()))
+            val fileContent = getFileContent(dateStr)
+            emit(dayPlanJsonConverter.convertToDayPlan(fileContent))
         }
     }
 
-    fun getDayPlan(dates: List<LocalDate>) {
-        dates.forEach { date ->
-            val dateStr = DateCalculator.toString(date)
-            val file = File("$dayPlansLocation/$dateStr").listFiles().get(0)
-            println(dayPlanJsonConverter.convertToDayPlan(file.readText()))
-        }
+    private fun getFileContent(dateStr: String): String {
+        // TODO future implementation will read from disk
+//        val fileContent = File("$dayPlansLocation/$dateStr").listFiles().get(0).readText()
+        return DayPlanFileRepository::class.java.getResource("/day-plan-23-11-2020.json").readText()
     }
 
 }
