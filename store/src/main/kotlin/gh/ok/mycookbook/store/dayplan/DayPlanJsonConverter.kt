@@ -5,6 +5,7 @@ import gh.ok.mycookbook.domain.dayplan.DayPlan
 import gh.ok.mycookbook.domain.dayplan.Meal
 import gh.ok.mycookbook.domain.dayplan.MealCategory
 import gh.ok.mycookbook.domain.recipe.entity.Ingredient
+import gh.ok.mycookbook.domain.recipe.entity.IngredientUnit
 import gh.ok.mycookbook.domain.recipe.entity.Recipe
 import org.json.JSONArray
 import org.json.JSONObject
@@ -27,7 +28,7 @@ class DayPlanJsonConverter {
     private fun convertMeals(dayPlan: JSONObject): List<Meal> {
         val mealsJson = dayPlan.getJSONArray("meals")
         val meals = ArrayList<Meal>()
-        for (i in 0..mealsJson.length() - 1) {
+        for (i in 0 until mealsJson.length()) {
             val mealJson = mealsJson.getJSONObject(i)
             meals.add(
                 Meal(
@@ -52,12 +53,12 @@ class DayPlanJsonConverter {
     private fun convertRecipes(mealJson: JSONObject): List<Recipe> {
         val recipesJson: JSONArray = mealJson.getJSONArray("recipes")
         val recipes = ArrayList<Recipe>()
-        for (i in 0..recipesJson.length() - 1) {
+        for (i in 0 until recipesJson.length()) {
             val recipeJson = recipesJson.getJSONObject(i)
             recipes.add(
                 Recipe(
                     recipeJson.getString("title"),
-                    convertIngredients(recipeJson),
+                    convertToIngredients(recipeJson),
                     convertToDescription(recipeJson)
                 )
             )
@@ -76,9 +77,23 @@ class DayPlanJsonConverter {
         } else emptyMap()
     }
 
-    private fun convertIngredients(recipeJson: JSONObject): List<Ingredient> {
+    private fun convertToIngredients(recipeJson: JSONObject): List<Ingredient> {
         val ingredientsJson = recipeJson.getJSONArray("ingredients")
-//        TODO("Not yet implemented")
-        return emptyList()
+        val ingredients = ArrayList<Ingredient>()
+        for (i in 0 until ingredientsJson.length()) {
+            val ingredientJson = ingredientsJson.getJSONObject(i)
+            ingredients.add(Ingredient(ingredientJson.getString("name"), convertToAmounts(ingredientJson)))
+        }
+        return ingredients
+    }
+
+    private fun convertToAmounts(ingredientJson: JSONObject): List<Pair<Double, IngredientUnit>> {
+        val amountsJson = ingredientJson.getJSONArray("amounts")
+        val amounts = ArrayList<Pair<Double, IngredientUnit>>()
+        for (i in 0 until amountsJson.length()) {
+            val amountJson = amountsJson.getJSONObject(i)
+            amounts.add(Pair(amountJson.getDouble("amount"), IngredientUnit.fromString(amountJson.getString("unit"))))
+        }
+        return amounts
     }
 }

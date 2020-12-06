@@ -1,7 +1,6 @@
 package gh.ok.mycookbook.store.dayplan
 
 import gh.ok.mycookbook.core.utils.DateCalculator
-import gh.ok.mycookbook.domain.dayplan.IDayPlanRepository
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
 

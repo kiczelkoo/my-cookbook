@@ -19,67 +19,121 @@
                     "ingredients":[
                         {
                             "name":"Olej kokosowy extra virgin",
-                            "amount":0.33,
-                            "unit":"łyżeczka",
-                            "amountSI":5,
-                            "unitSI":"g"
+                            "amounts":[
+                                {
+                                    "amount":0.33,
+                                    "unit":"łyżeczka"
+                                },
+                                {
+                                    "amount":5,
+                                    "unit":"g"
+                                }
+                            ]
                         },
                         {
                             "name":"Cebula",
-                            "amount":0.25,
-                            "unit":"sztuka",
-                            "amountSI":28,
-                            "unitSI":"g"
+                            "amounts":[
+                                {
+                                    "amount":0.25,
+                                    "unit":"sztuka"
+                                },
+                                {
+                                    "amount":28,
+                                    "unit":"g"
+                                }
+                            ]
                         },
                         {
                             "name":"Czosnek",
-                            "amount":1,
-                            "unit":"ząbek",
-                            "amountSI":5,
-                            "unitSI":"g"
+                            "amounts":[
+                                {
+                                    "amount":1,
+                                    "unit":"ząbek"
+                                },
+                                {
+                                    "amount":5,
+                                    "unit":"g"
+                                }
+                            ]
                         },
                         {
                             "name":"Suszone pomidory",
-                            "amount":3,
-                            "unit":"plaster",
-                            "amountSI":21,
-                            "unitSI":"g"
+                            "amounts":[
+                                {
+                                    "amount":3,
+                                    "unit":"plaster"
+                                },
+                                {
+                                    "amount":21,
+                                    "unit":"g"
+                                }
+                            ]
                         },
                         {
                             "name":"Pomidory krojone w sosie własnym",
-                            "amount":0.75,
-                            "unit":"szklanka",
-                            "amountSI":180,
-                            "unitSI":"g"
+                            "amounts":[
+                                {
+                                    "amount":0.75,
+                                    "unit":"szklanka"
+                                },
+                                {
+                                    "amount":180,
+                                    "unit":"g"
+                                }
+                            ]
                         },
                         {
                             "name":"Jaja kurze małe, rozmiar S",
-                            "amount":3,
-                            "unit":"sztuka",
-                            "amountSI":150,
-                            "unitSI":"g"
+                            "amounts":[
+                                {
+                                    "amount":3,
+                                    "unit":"sztuka"
+                                },
+                                {
+                                    "amount":150,
+                                    "unit":"g"
+                                }
+                            ]
                         },
                         {
                             "name":"Szczypiorek",
-                            "amount":1,
-                            "unit":"łyżka",
-                            "amountSI":5,
-                            "unitSI":"g"
+                            "amounts":[
+                                {
+                                    "amount":1,
+                                    "unit":"łyżka"
+                                },
+                                {
+                                    "amount":5,
+                                    "unit":"g"
+                                }
+                            ]
                         },
                         {
                             "name":"Sól morska",
-                            "amount":1,
-                            "unit":"szczypta"
+                            "amounts":[
+                                {
+                                    "amount":1,
+                                    "unit":"szczypta"
+                                }
+                            ]
                         },
                         {
                             "name":"Pieprz cayenne",
-                            "amount":1,
-                            "unit":"szczypta"
+                            "amounts":[
+                                {
+                                    "amount":1,
+                                    "unit":"szczypta"
+                                }
+                            ]
                         },
                         {
                             "name":"Oregano suszone",
-                            "amount":1,
-                            "unit":"szczypta"
+                            "amounts":[
+                                {
+                                    "amount":1,
+                                    "unit":"szczypta"
+                                }
+                            ]
                         }
                     ],
                     "description":{
@@ -94,10 +148,16 @@
                     "ingredients":[
                         {
                             "name":"Herbata ziołowa",
-                            "amount":1,
-                            "unit":"szklanka",
-                            "amountSI":240,
-                            "unitSI":"ml"
+                            "amounts":[
+                                {
+                                    "amount":1,
+                                    "unit":"szklanka"
+                                },
+                                {
+                                    "amount":240,
+                                    "unit":"ml"
+                                }
+                            ]
                         }
                     ]
                 }
@@ -117,45 +177,81 @@
                     "ingredients":[
                         {
                             "name":"Jabłko",
-                            "amount":1.5,
-                            "unit":"sztuka",
-                            "amountSI":225,
-                            "unitSI":"g"
+                            "amounts":[
+                                {
+                                    "amount":1.5,
+                                    "unit":"sztuka"
+                                },
+                                {
+                                    "amount":225,
+                                    "unit":"g"
+                                }
+                            ]
                         },
                         {
                             "name":"Limonka",
-                            "amount":0.5,
-                            "unit":"sztuka",
-                            "amountSI":50,
-                            "unitSI":"g"
+                            "amounts":[
+                                {
+                                    "amount":0.5,
+                                    "unit":"sztuka"
+                                },
+                                {
+                                    "amount":50,
+                                    "unit":"g"
+                                }
+                            ]
                         },
                         {
                             "name":"Wiórki kokosowe",
-                            "amount":1,
-                            "unit":"łyżka",
-                            "amountSI":6,
-                            "unitSI":"g"
+                            "amounts":[
+                                {
+                                    "amount":1,
+                                    "unit":"łyżka"
+                                },
+                                {
+                                    "amount":6,
+                                    "unit":"g"
+                                }
+                            ]
                         },
                         {
                             "name":"Cukier kokosowy",
-                            "amount":0.5,
-                            "unit":"łyżeczka",
-                            "amountSI":5,
-                            "unitSI":"g"
+                            "amounts":[
+                                {
+                                    "amount":0.5,
+                                    "unit":"łyżeczka"
+                                },
+                                {
+                                    "amount":5,
+                                    "unit":"g"
+                                }
+                            ]
                         },
                         {
                             "name":"Imbir świeży",
-                            "amount":1,
-                            "unit":"plaster",
-                            "amountSI":10,
-                            "unitSI":"g"
+                            "amounts":[
+                                {
+                                    "amount":1,
+                                    "unit":"plaster"
+                                },
+                                {
+                                    "amount":10,
+                                    "unit":"g"
+                                }
+                            ]
                         },
                         {
                             "name":"Malina Lio Shake",
-                            "amount":1,
-                            "unit":"łyżka",
-                            "amountSI":8,
-                            "unitSI":"g"
+                            "amounts":[
+                                {
+                                    "amount":1,
+                                    "unit":"łyżka"
+                                },
+                                {
+                                    "amount":8,
+                                    "unit":"g"
+                                }
+                            ]
                         }
                     ],
                     "description":{
@@ -178,88 +274,160 @@
                     "ingredients":[
                         {
                             "name":"Makaron ryżowy",
-                            "amountSI":40,
-                            "unitSI":"g"
+                            "amounts":[
+                                {
+                                    "amount":40,
+                                    "unit":"g"
+                                }
+                            ]
                         },
                         {
                             "name":"Cebula",
-                            "amount":0.25,
-                            "unit":"sztuka",
-                            "amountSI":28,
-                            "unitSI":"g"
+                            "amounts":[
+                                {
+                                    "amount":0.25,
+                                    "unit":"sztuka"
+                                },
+                                {
+                                    "amount":28,
+                                    "unit":"g"
+                                }
+                            ]
                         },
                         {
                             "name":"Olej kokosowy extra virgin",
-                            "amount":0.25,
-                            "unit":"łyżeczki",
-                            "amountSI":4,
-                            "unitSI":"g"
+                            "amounts":[
+                                {
+                                    "amount":0.25,
+                                    "unit":"łyżeczka"
+                                },
+                                {
+                                    "amount":4,
+                                    "unit":"g"
+                                }
+                            ]
                         },
                         {
                             "name":"Marchew",
-                            "amount":0.5,
-                            "unit":"sztuki",
-                            "amountSI":23,
-                            "unitSI":"g"
+                            "amounts":[
+                                {
+                                    "amount":0.5,
+                                    "unit":"sztuka"
+                                },
+                                {
+                                    "amount":23,
+                                    "unit":"g"
+                                }
+                            ]
                         },
                         {
                             "name":"Papryka czerwona",
-                            "amount":0.5,
-                            "unit":"sztuki",
-                            "amountSI":115,
-                            "unitSI":"g"
+                            "amounts":[
+                                {
+                                    "amount":0.5,
+                                    "unit":"sztuka"
+                                },
+                                {
+                                    "amount":115,
+                                    "unit":"g"
+                                }
+                            ]
                         },
                         {
                             "name":"Tofu naturalne",
-                            "amountSI":130,
-                            "unitSI":"g"
+                            "amounts":[
+                                {
+                                    "amount":130,
+                                    "unit":"g"
+                                }
+                            ]
                         },
                         {
                             "name":"Ekologiczne masło migdałowe",
-                            "amount":0.5,
-                            "unit":"łyżeczki",
-                            "amountSI":5,
-                            "unitSI":"g"
+                            "amounts":[
+                                {
+                                    "amount":0.5,
+                                    "unit":"łyżeczka"
+                                },
+                                {
+                                    "amount":5,
+                                    "unit":"g"
+                                }
+                            ]
                         },
                         {
                             "name":"Limonka",
-                            "amount":0.5,
-                            "unit":"sztuki",
-                            "amountSI":50,
-                            "unitSI":"g"
+                            "amounts":[
+                                {
+                                    "amount":0.5,
+                                    "unit":"sztuka"
+                                },
+                                {
+                                    "amount":50,
+                                    "unit":"g"
+                                }
+                            ]
                         },
                         {
                             "name":"Szczypiorek",
-                            "amount":1,
-                            "unit":"łyżka",
-                            "amountSI":5,
-                            "unitSI":"g"
+                            "amounts":[
+                                {
+                                    "amount":1,
+                                    "unit":"łyżka"
+                                },
+                                {
+                                    "amount":5,
+                                    "unit":"g"
+                                }
+                            ]
                         },
                         {
                             "name":"Imbir świeży",
-                            "amount":1,
-                            "unit":"plaster",
-                            "amountSI":10,
-                            "unitSI":"g"
+                            "amounts":[
+                                {
+                                    "amount":1,
+                                    "unit":"plaster"
+                                },
+                                {
+                                    "amount":10,
+                                    "unit":"g"
+                                }
+                            ]
                         },
                         {
                             "name":"Sos sojowy (tamari, bezglutenowy)",
-                            "amount":1,
-                            "unit":"łyżeczka",
-                            "amountSI":5,
-                            "unitSI":"ml"
+                            "amounts":[
+                                {
+                                    "amount":1,
+                                    "unit":"łyżeczka"
+                                },
+                                {
+                                    "amount":5,
+                                    "unit":"ml"
+                                }
+                            ]
                         },
                         {
                             "name":"Curry",
-                            "amount":2,
-                            "unit":"szczypta"
+                            "amounts":[
+                                {
+                                    "amount":2,
+                                    "unit":"szczypta"
+                                }
+                            ]
                         },
                         {
                             "name":"Kolendra świeża",
-                            "amount":1,
-                            "unit":"łyżeczka",
-                            "amountSI":6,
-                            "unitSI":"g"
+                            "amounts":[
+                                {
+                                    "amount":1,
+                                    "unit":"łyżeczka"
+                                },
+                                {
+                                    "amount":6,
+                                    "unit":"g"
+                                }
+                            ]
                         }
                     ],
                     "description":{
@@ -277,10 +445,16 @@
                     "ingredients":[
                         {
                             "name":"Woda",
-                            "amount":1,
-                            "unit":"szklanka",
-                            "amountSI":240,
-                            "unitSI":"ml"
+                            "amounts":[
+                                {
+                                    "amount":1,
+                                    "unit":"szklanka"
+                                },
+                                {
+                                    "amount":240,
+                                    "unit":"ml"
+                                }
+                            ]
                         }
                     ]
                 }
@@ -300,29 +474,51 @@
                     "ingredients":[
                         {
                             "name":"Płatki owsiane bezglutenowe",
-                            "amount":2.5,
-                            "unit":"łyżki",
-                            "amountSI":25,
-                            "unitSI":"g"
+                            "amounts":[
+                                {
+                                    "amount":2.5,
+                                    "unit":"łyżka"
+                                },
+                                {
+                                    "amount":25,
+                                    "unit":"g"
+                                }
+                            ]
                         },
                         {
                             "name":"Śliwki suszone",
-                            "amount":1.5,
-                            "unit":"sztuki",
-                            "amountSI":11,
-                            "unitSI":"g"
+                            "amounts":[
+                                {
+                                    "amount":1.5,
+                                    "unit":"sztuka"
+                                },
+                                {
+                                    "amount":11,
+                                    "unit":"g"
+                                }
+                            ]
                         },
                         {
                             "name":"Cynamon mielony",
-                            "amount":1,
-                            "unit":"szczypta"
+                            "amounts":[
+                                {
+                                    "amount":1,
+                                    "unit":"szczypta"
+                                }
+                            ]
                         },
                         {
                             "name":"Malina Lio shake",
-                            "amount":1,
-                            "unit":"łyżeczka",
-                            "amountSI":4,
-                            "unitSI":"g"
+                            "amounts":[
+                                {
+                                    "amount":1,
+                                    "unit":"łyżeczka"
+                                },
+                                {
+                                    "amount":4,
+                                    "unit":"g"
+                                }
+                            ]
                         }
                     ],
                     "description":{
@@ -337,10 +533,16 @@
                     "ingredients":[
                         {
                             "name":"Woda",
-                            "amount":1,
-                            "unit":"szklanka",
-                            "amountSI":240,
-                            "unitSI":"ml"
+                            "amounts":[
+                                {
+                                    "amount":1,
+                                    "unit":"szklanka"
+                                },
+                                {
+                                    "amount":240,
+                                    "unit":"ml"
+                                }
+                            ]
                         }
                     ]
                 }
@@ -360,51 +562,91 @@
                     "ingredients":[
                         {
                             "name":"Łosoś świeży",
-                            "amountSI":120,
-                            "unitSI":"g"
+                            "amounts":[
+                                {
+                                    "amount":120,
+                                    "unit":"g"
+                                }
+                            ]
                         },
                         {
                             "name":"Limonka",
-                            "amount":0.25,
-                            "unit":"sztuki",
-                            "amountSI":25,
-                            "unitSI":"g"
+                            "amounts":[
+                                {
+                                    "amount":0.25,
+                                    "unit":"sztuka"
+                                },
+                                {
+                                    "amount":25,
+                                    "unit":"g"
+                                }
+                            ]
                         },
                         {
                             "name":"Buraki gotowane",
-                            "amount":0.5,
-                            "unit":"sztuki",
-                            "amountSI":60,
-                            "unitSI":"g"
+                            "amounts":[
+                                {
+                                    "amount":0.5,
+                                    "unit":"sztuka"
+                                },
+                                {
+                                    "amount":60,
+                                    "unit":"g"
+                                }
+                            ]
                         },
                         {
                             "name":"Czosnek",
-                            "amount":0.5,
-                            "unit":"ząbek",
-                            "amountSI":3,
-                            "unitSI":"g"
+                            "amounts":[
+                                {
+                                    "amount":0.5,
+                                    "unit":"ząbek"
+                                },
+                                {
+                                    "amount":3,
+                                    "unit":"g"
+                                }
+                            ]
                         },
                         {
                             "name":"Sól morska",
-                            "amount":1,
-                            "unit":"szczypta"
+                            "amounts":[
+                                {
+                                    "amount":1,
+                                    "unit":"szczypta"
+                                }
+                            ]
                         },
                         {
                             "name":"Pieprz czarny",
-                            "amount":1,
-                            "unit":"szczypta"
+                            "amounts":[
+                                {
+                                    "amount":1,
+                                    "unit":"szczypta"
+                                }
+                            ]
                         },
                         {
                             "name":"Zioła prowansalskie",
-                            "amount":1,
-                            "unit":"szczypta"
+                            "amounts":[
+                                {
+                                    "amount":1,
+                                    "unit":"szczypta"
+                                }
+                            ]
                         },
                         {
                             "name":"Ocet balsamiczny",
-                            "amount":0.5,
-                            "unit":"łyżeczki",
-                            "amountSI":1.5,
-                            "unitSI":"ml"
+                            "amounts":[
+                                {
+                                    "amount":0.5,
+                                    "unit":"łyżeczka"
+                                },
+                                {
+                                    "amount":1.5,
+                                    "unit":"ml"
+                                }
+                            ]
                         }
                     ]
                 }
