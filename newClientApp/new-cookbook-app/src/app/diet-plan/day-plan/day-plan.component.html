@@ -1,1 +1,5 @@
-<p>day-plan works!</p>
+<mcb-day-summary [kcal]="plan.kcal" [carbs]="plan.carbsPerc" [fats]="plan.fatsPerc" [proteins]="plan.proteinsPerc">
+</mcb-day-summary>
+<div *ngFor="let meal of plan.meals">
+    <mcb-meal [meal]="meal"></mcb-meal>
+</div>

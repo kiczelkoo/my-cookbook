@@ -11,7 +11,7 @@ export class DietPlanService {
 
   constructor() { }
 
-  getDietPlansForWeekStartsFrom(date: Date): Observable<DayPlan[]> {
+  getDietPlansForDay(date: Date): Observable<DayPlan[]> {
     return of(mockPlan);
   }
 

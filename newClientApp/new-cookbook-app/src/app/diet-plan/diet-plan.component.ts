@@ -9,24 +9,26 @@ import { DietPlanService } from './diet-plan.service';
 })
 export class DietPlanComponent implements OnInit {
 
-  dailyPlans: DayPlan[] = [];
-
   selectedDate: Date = new Date();
-
+  selectedPlan: DayPlan;
+  
+  private dailyPlans: DayPlan[] = [];
+  
   constructor(private dietPlanService: DietPlanService) { }
 
   ngOnInit(): void {
-    this.getDietPlans()
+    this.getDietPlan()
   }
 
   onNewDateSelected(newDate: Date) {
     this.selectedDate = newDate;
-    this.getDietPlans();
+    this.getDietPlan();
   }
 
-  private getDietPlans() {
-    this.dietPlanService.getDietPlansForWeekStartsFrom(this.selectedDate).subscribe(dailyPlans => {
+  private getDietPlan() {
+    this.dietPlanService.getDietPlansForDay(this.selectedDate).subscribe(dailyPlans => {
       this.dailyPlans = dailyPlans;
+      this.selectedPlan = this.dailyPlans[0]; // TODO selection logic must be implemented
     })
   }
 

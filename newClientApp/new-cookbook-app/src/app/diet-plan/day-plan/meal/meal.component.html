@@ -1,0 +1,6 @@
+<mcb-meal-summary [kcal]="meal.kcal" [carbs]="meal.carbs" [fats]="meal.fats" [proteins]="meal.proteins"
+    [prepTime]="meal.prepTimeInMin" [mealName]="meal.name">
+</mcb-meal-summary>
+<div *ngFor="let dish of meal.dishes">
+    <mcb-dish [dish]="dish"></mcb-dish>
+</div>

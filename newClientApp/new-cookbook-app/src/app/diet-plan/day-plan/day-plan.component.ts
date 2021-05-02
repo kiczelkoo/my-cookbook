@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { DayPlan } from '../day-plan';
 
 @Component({
   selector: 'mcb-day-plan',
@@ -6,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./day-plan.component.scss']
 })
 export class DayPlanComponent implements OnInit {
+
+  @Input()
+  plan: DayPlan;
 
   constructor() { }
 
