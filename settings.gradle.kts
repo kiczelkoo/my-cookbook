@@ -13,7 +13,7 @@ rootProject.name = "mycookbook"
 include(":core")
 
 // adapters
-include(":application")
+include(":web-app")
 include(":store")
 include(":integration")
 
