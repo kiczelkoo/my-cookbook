@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { EventEmitter } from '@angular/core';
+import { Component, Input, OnInit, Output } from '@angular/core';
 import { MatButtonToggleChange } from '@angular/material/button-toggle';
 
 @Component({
@@ -18,6 +19,9 @@ export class DateRangeComponent implements OnInit {
     this.dateRange = this.calculateDateRange(this._selectedDate);
   }
   private _selectedDate = new Date();
+
+  @Output()
+  newDateSelected = new EventEmitter<Date>();
 
   constructor() { }
 
@@ -41,6 +45,7 @@ export class DateRangeComponent implements OnInit {
 
   selectionChanged(changeEvent: MatButtonToggleChange) {
     this._selectedDate = changeEvent.value;
+    this.newDateSelected.emit(changeEvent.value);
   }
 
   isChecked(day: Date): boolean {

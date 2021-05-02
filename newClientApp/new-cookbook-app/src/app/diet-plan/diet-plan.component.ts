@@ -16,11 +16,20 @@ export class DietPlanComponent implements OnInit {
   constructor(private dietPlanService: DietPlanService) { }
 
   ngOnInit(): void {
+    this.getDietPlans()
+  }
+
+  onNewDateSelected(newDate: Date) {
+    this.selectedDate = newDate;
+    this.getDietPlans();
+  }
+
+  private getDietPlans() {
     this.dietPlanService.getDietPlansForWeekStartsFrom(this.selectedDate).subscribe(dailyPlans => {
       this.dailyPlans = dailyPlans;
     })
   }
 
-  
+
 
 }
