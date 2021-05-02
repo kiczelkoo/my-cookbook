@@ -3,7 +3,7 @@ import { DayPlan } from './day-plan';
 import { DietPlanService } from './diet-plan.service';
 
 @Component({
-  selector: 'app-diet-plan',
+  selector: 'mcb-diet-plan',
   templateUrl: './diet-plan.component.html',
   styleUrls: ['./diet-plan.component.scss']
 })

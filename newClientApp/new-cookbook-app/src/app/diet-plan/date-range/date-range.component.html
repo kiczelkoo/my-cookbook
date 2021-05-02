@@ -1,0 +1,7 @@
+<div>
+    <mat-button-toggle-group>
+        <mat-button-toggle *ngFor="let day of dateRange" [checked]="isChecked(day)" (change)="selectionChanged($event)"
+            [value]="day">{{day | date:'d MMM'}}
+        </mat-button-toggle>
+    </mat-button-toggle-group>
+</div>
